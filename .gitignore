@@ -1,0 +1,32 @@
+# Environment
+.env
+.env.*
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Data
+data/raw/
+data/embeddings/
+data/finetune/
+data/benchmark/results/
+
+# Models
+models/checkpoints/
+exported_models/
+*.gguf
+*.bin
+*.safetensors
+*.pt
+
+# Reports and generated files
+reports/benchmark/results/
+reports/generated/
+*.log
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

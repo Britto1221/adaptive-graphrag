@@ -1,0 +1,63 @@
+# Core LLM + Orchestration
+langchain
+langchain-community
+langchain-openai
+langchain-core
+langgraph
+openai
+
+# Document Ingestion
+unstructured
+pypdf
+python-docx
+pandas
+openpyxl
+
+# Vector Store + Embeddings
+pinecone-client
+langchain-pinecone
+sentence-transformers
+tiktoken
+
+# BM25 + Reranking
+rank-bm25
+flashrank
+
+# Graph Database
+neo4j
+langchain-neo4j
+
+# Local LLM
+ollama
+
+# Evaluation
+ragas
+deepeval
+rouge-score
+bert-score
+nltk
+scikit-learn
+
+# Resource Monitoring
+psutil
+gputil
+py-cpuinfo
+
+# Dashboard
+streamlit
+plotly
+altair
+
+# Utilities
+python-dotenv
+pyyaml
+loguru
+tqdm
+rich
+httpx
+requests
+
+# Testing
+pytest
+pytest-asyncio
+pytest-cov
