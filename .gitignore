@@ -1,32 +1,108 @@
-# Environment
+# =========================================================
+# Secrets
+# =========================================================
 .env
 .env.*
+!.env.example
+
+# =========================================================
+# Virtual environments
+# =========================================================
 venv/
 .venv/
+env/
+
+# =========================================================
+# Python
+# =========================================================
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
-# Data
-data/raw/
-data/embeddings/
-data/finetune/
-data/benchmark/results/
+# =========================================================
+# Raw, private and generated data
+# =========================================================
+data/raw/*
+data/cleaned/*
+data/chunks/*
+data/vector/*
+data/embeddings/*
+data/graph/graph_exports/*
+data/finetune/*
+data/benchmark/cached_retrieval/*
+data/benchmark/results/*
 
-# Models
-models/checkpoints/
+# Keep directory placeholders
+!data/raw/.gitkeep
+!data/cleaned/.gitkeep
+!data/chunks/.gitkeep
+!data/vector/.gitkeep
+!data/embeddings/.gitkeep
+!data/graph/graph_exports/.gitkeep
+!data/finetune/.gitkeep
+!data/benchmark/cached_retrieval/.gitkeep
+!data/benchmark/results/.gitkeep
+
+# =========================================================
+# Model files and checkpoints
+# =========================================================
+models/
 exported_models/
+checkpoints/
 *.gguf
-*.bin
 *.safetensors
+*.bin
 *.pt
+*.pth
+*.ckpt
 
-# Reports and generated files
-reports/benchmark/results/
-reports/generated/
+# =========================================================
+# Logs
+# =========================================================
+logs/*
 *.log
+!logs/.gitkeep
 
-# OS and editor files
-.DS_Store
-Thumbs.db
+# =========================================================
+# Generated reports
+# =========================================================
+reports/figures/*
+reports/tables/*
+reports/benchmark_exports/*
+reports/drafts/*
+
+!reports/figures/.gitkeep
+!reports/tables/.gitkeep
+!reports/benchmark_exports/.gitkeep
+!reports/drafts/.gitkeep
+
+# =========================================================
+# Jupyter
+# =========================================================
+.ipynb_checkpoints/
+
+# =========================================================
+# Editors
+# =========================================================
 .vscode/
 .idea/
+
+# =========================================================
+# Operating system
+# =========================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================================================
+# Temporary files
+# =========================================================
+*.tmp
+*.temp
+*.bak
+*.swp
