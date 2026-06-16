@@ -1,0 +1,36 @@
+models:
+  openai_base:
+    provider: openai
+    model_name: replace-with-openai-model
+    fine_tuned: false
+    temperature: 0
+
+  openai_finetuned:
+    provider: openai
+    model_name: replace-with-openai-finetuned-model
+    fine_tuned: true
+    temperature: 0
+
+  local_llm_1_base:
+    provider: ollama
+    model_name: replace-with-local-model-1
+    fine_tuned: false
+    temperature: 0
+
+  local_llm_1_finetuned:
+    provider: ollama
+    model_name: replace-with-local-model-1-ft
+    fine_tuned: true
+    temperature: 0
+
+  local_llm_2_base:
+    provider: ollama
+    model_name: replace-with-local-model-2
+    fine_tuned: false
+    temperature: 0
+
+  local_llm_2_finetuned:
+    provider: ollama
+    model_name: replace-with-local-model-2-ft
+    fine_tuned: true
+    temperature: 0

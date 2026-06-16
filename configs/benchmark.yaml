@@ -1,0 +1,42 @@
+benchmark:
+  rag_types:
+    - vector
+    - graph
+    - hybrid
+
+  models:
+    - openai_base
+    - openai_finetuned
+    - local_llm_1_base
+    - local_llm_1_finetuned
+    - local_llm_2_base
+    - local_llm_2_finetuned
+
+  quality_repetitions: 1
+  latency_repetitions: 3
+  request_timeout_seconds: 180
+EOF 
+
+cls
+
+
+/
+.
+cat > configs/benchmark.yaml <<'EOF'
+benchmark:
+  rag_types:
+    - vector
+    - graph
+    - hybrid
+
+  models:
+    - openai_base
+    - openai_finetuned
+    - local_llm_1_base
+    - local_llm_1_finetuned
+    - local_llm_2_base
+    - local_llm_2_finetuned
+
+  quality_repetitions: 1
+  latency_repetitions: 3
+  request_timeout_seconds: 180

@@ -1,108 +1,61 @@
-# =========================================================
 # Secrets
-# =========================================================
 .env
 .env.*
 !.env.example
 
-# =========================================================
 # Virtual environments
-# =========================================================
 venv/
 .venv/
-env/
 
-# =========================================================
 # Python
-# =========================================================
 __pycache__/
 *.py[cod]
-*$py.class
 .pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-htmlcov/
 
-# =========================================================
-# Raw, private and generated data
-# =========================================================
+# Raw and generated data
 data/raw/*
 data/cleaned/*
 data/chunks/*
-data/vector/*
-data/embeddings/*
-data/graph/graph_exports/*
+data/graph/*
 data/finetune/*
-data/benchmark/cached_retrieval/*
 data/benchmark/results/*
 
-# Keep directory placeholders
+# Keep empty directories
 !data/raw/.gitkeep
 !data/cleaned/.gitkeep
 !data/chunks/.gitkeep
-!data/vector/.gitkeep
-!data/embeddings/.gitkeep
-!data/graph/graph_exports/.gitkeep
+!data/graph/.gitkeep
 !data/finetune/.gitkeep
-!data/benchmark/cached_retrieval/.gitkeep
 !data/benchmark/results/.gitkeep
 
-# =========================================================
-# Model files and checkpoints
-# =========================================================
-models/
-exported_models/
-checkpoints/
+# Models
 *.gguf
 *.safetensors
 *.bin
 *.pt
 *.pth
-*.ckpt
+checkpoints/
+exported_models/
 
-# =========================================================
 # Logs
-# =========================================================
-logs/*
+logs/
 *.log
-!logs/.gitkeep
 
-# =========================================================
 # Generated reports
-# =========================================================
 reports/figures/*
-reports/tables/*
-reports/benchmark_exports/*
-reports/drafts/*
+reports/final/*
 
 !reports/figures/.gitkeep
-!reports/tables/.gitkeep
-!reports/benchmark_exports/.gitkeep
-!reports/drafts/.gitkeep
+!reports/final/.gitkeep
 
-# =========================================================
 # Jupyter
-# =========================================================
 .ipynb_checkpoints/
 
-# =========================================================
 # Editors
-# =========================================================
 .vscode/
 .idea/
 
-# =========================================================
 # Operating system
-# =========================================================
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# =========================================================
-# Temporary files
-# =========================================================
-*.tmp
-*.temp
-*.bak
-*.swp
