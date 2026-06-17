@@ -1,6 +1,6 @@
 from langchain_huggingface import HuggingFaceEmbeddings
 
-MODEL = "sentence-transformers/all-mpnet-base-v2"
+MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 def get_embedding_model():
     """
