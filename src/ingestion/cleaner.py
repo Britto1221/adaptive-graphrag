@@ -1,7 +1,6 @@
 from langchain_core.documents import Document
 import re
 import time
-
 from src.ingestion.loader import load_documents
 
 def clean_text(text:str)->str:
@@ -50,9 +49,7 @@ def clean_documents(docs:list)->list[Document]:
     return cleaned_docs
 
 
-
-
-def main() -> None:
+if __name__ == "__main__":
     start = time.perf_counter()
 
     documents = load_documents("data/raw")
@@ -70,7 +67,3 @@ def main() -> None:
 
         print("\nCleaned preview:")
         print(first_document.page_content[:500])
-
-
-if __name__ == "__main__":
-    main()
