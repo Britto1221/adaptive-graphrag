@@ -69,7 +69,9 @@ def generate_hybrid_answer(
     graph_data: str,
 ) -> str:
     vector_context = format_context(vector_data)
-
+    if not vector_context.strip():
+        vector_context = "No vector context retrieved."
+    
     if not graph_data or not graph_data.strip():
         graph_context = "No graph context retrieved."
     else:
