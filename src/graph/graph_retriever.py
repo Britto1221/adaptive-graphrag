@@ -13,33 +13,33 @@ llm = ChatOpenAI(
 
 def ask_graph(query:str):
     CYPHER_GENERATION_TEMPLATE = """
-You are an expert Neo4j Cypher query generator.
+    You are an expert Neo4j Cypher query generator.
 
-Database schema:
-{schema}
+    Database schema:
+    {schema}
 
-Rules:
-1. Return only a valid Cypher query.
-2. Do not use Markdown code fences.
-3. Use only labels, properties, and relationship types present in the schema.
-4. Generate read-only queries only.
-5. Never use CREATE, MERGE, DELETE, DETACH DELETE, SET, REMOVE, DROP, or CALL.
-6. Use LIMIT 10 unless the question asks for aggregation, counting, or a specific number of results.
-7. Do not invent relationship types.
-8. The property `relationshipTypes` is a list stored on Person nodes. Its values are not necessarily actual Neo4j relationship types.
-9. Richest-person nodes have a non-null `rank` property.
-10. Actor and director Person nodes from the movie dataset usually do not have a `rank` property.
-11. For questions about wealthy people, use:
-    WHERE person.rank IS NOT NULL
-12. Natural-language business relationship statements are connected through:
-    (:Person)-[:HAS_RELATIONSHIP_FACT]->(:RelationshipFact)
-13. A person's companies are connected through:
-    (:Person)-[:ASSOCIATED_WITH]->(:Company)
-14. Use case-insensitive matching when matching a name supplied by the user.
+    Rules:
+    1. Return only a valid Cypher query.
+    2. Do not use Markdown code fences.
+    3. Use only labels, properties, and relationship types present in the schema.
+    4. Generate read-only queries only.
+    5. Never use CREATE, MERGE, DELETE, DETACH DELETE, SET, REMOVE, DROP, or CALL.
+    6. Use LIMIT 10 unless the question asks for aggregation, counting, or a specific number of results.
+    7. Do not invent relationship types.
+    8. The property `relationshipTypes` is a list stored on Person nodes. Its values are not necessarily actual Neo4j relationship types.
+    9. Richest-person nodes have a non-null `rank` property.
+    10. Actor and director Person nodes from the movie dataset usually do not have a `rank` property.
+    11. For questions about wealthy people, use:
+        WHERE person.rank IS NOT NULL
+    12. Natural-language business relationship statements are connected through:
+        (:Person)-[:HAS_RELATIONSHIP_FACT]->(:RelationshipFact)
+    13. A person's companies are connected through:
+        (:Person)-[:ASSOCIATED_WITH]->(:Company)
+    14. Use case-insensitive matching when matching a name supplied by the user.
 
-Question:
-{question}
-"""
+    Question:
+    {question}
+    """
 
 
     QA_TEMPLATE = """

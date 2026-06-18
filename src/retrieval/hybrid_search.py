@@ -16,3 +16,5 @@ def hybrid_retriever(query:str,chunks:list[Document])->list[Document]:
             unique_docs.append(doc)
     return unique_docs
 
+if __name__ == "main":
+    print(hybrid_retriever("How is Elon Musk connected to Jeff Bezos?"),)
