@@ -2,10 +2,14 @@ import os
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from src.generation.prompt_templates import get_rag_prompt
+from src.graph.neo4j_client import neo4j_manager
 load_dotenv()
+from langchain_neo4j import GraphCypherQAChain
+from src.generation.prompt_templates import get_hybrid_rag_prompt
 
 if not os.getenv("OPENAI_API_KEY"):
     raise ValueError("OPENAI_API_KEY is missing from the .env file.")
+
 
 llm = ChatOpenAI(
     model="gpt-4o-mini",
@@ -42,6 +46,43 @@ def generate_answer(query, chunks):
         {
             "question": query,
             "context": context,
+        }
+    )
+
+    return response.content
+
+def graph_answer(query,cypher_prompt,qa_prompt):
+    chain = GraphCypherQAChain.from_llm(
+        cypher_llm=llm,
+        qa_llm=llm,
+        graph=neo4j_manager(),
+        cypher_prompt=cypher_prompt,
+        qa_prompt=qa_prompt,
+        verbose=True,
+        allow_dangerous_requests=True
+    )
+    return chain.invoke({'query':query})
+
+def generate_hybrid_answer(
+    query: str,
+    vector_data,
+    graph_data: str,
+) -> str:
+    vector_context = format_context(vector_data)
+
+    if not graph_data or not graph_data.strip():
+        graph_context = "No graph context retrieved."
+    else:
+        graph_context = graph_data
+
+    prompt = get_hybrid_rag_prompt()
+    chain = prompt | llm
+
+    response = chain.invoke(
+        {
+            "question": query,
+            "vector_context": vector_context,
+            "graph_context": graph_context,
         }
     )
 

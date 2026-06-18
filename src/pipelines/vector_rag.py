@@ -1,15 +1,9 @@
-from src.ingestion.loader import load_documents
-from src.ingestion.cleaner import clean_documents
-from src.ingestion.chunker import chunk_documents
+from src.ingestion.chunker import load_saved_chunks
 from src.retrieval.reranker import rerank_documents
 from src.retrieval.hybrid_search import hybrid_retriever
 from src.generation.answer_generator import generate_answer
 
-print("Loading Documents......")
-documents = load_documents("data/raw")
-print("Documents Loaded")
-cleaned = clean_documents(documents)
-CHUNKS = chunk_documents(cleaned) 
+CHUNKS = load_saved_chunks() 
 
 def vector_pipeline(query:str):
     chunks = hybrid_retriever(query, CHUNKS)

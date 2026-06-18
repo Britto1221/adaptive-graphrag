@@ -1,6 +1,8 @@
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 import time
+import json
+from pathlib import Path
 from src.ingestion.loader import load_documents
 from src.ingestion.cleaner import clean_documents
 
@@ -19,6 +21,36 @@ def chunk_documents(documents):
         chunk.metadata["chunk_length"] = len(chunk.page_content)
     
     return chunks 
+
+CHUNKS_PATH = "data/chunks/chunks.jsonl"
+
+def save_chunks(chunks: list[Document],output_path: str = CHUNKS_PATH,) -> None:
+    path = Path(output_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    with path.open("w", encoding="utf-8") as file:
+        for chunk in chunks:
+            record = {
+                "page_content": chunk.page_content,
+                "metadata": chunk.metadata,
+            }
+            file.write(json.dumps(record,ensure_ascii=False,)+ "\n")
+    print(f"Saved {len(chunks)} chunks to {path}")
+
+def load_saved_chunks(input_path: str = CHUNKS_PATH,) -> list[Document]:
+    path = Path(input_path)
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Saved chunks file not found: {path}. "
+            "Run python -m scripts.build_vector_index first."
+        )
+    chunks = []
+    with path.open("r", encoding="utf-8") as file:
+        for line in file:
+            record = json.loads(line)
+            chunks.append(Document(page_content=record["page_content"],metadata=record["metadata"],))
+    print(f"Loaded {len(chunks)} saved chunks from {path}")
+    return chunks
 
 if __name__ == "__main__":
     start = time.perf_counter()
