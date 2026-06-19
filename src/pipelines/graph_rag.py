@@ -24,12 +24,8 @@ def graph_pipeline(query: str, return_details: bool = True):
 
 if __name__ == "__main__":
     queries = [
-        "Who is the richest person in the database?",
-        "What companies does Elon Musk own?",
-        "How is Mark Zuckerberg connected to Mukesh Ambani?",
-        "Which billionaires are connected to NVIDIA?",
         "Who invested in Jio Platforms?"
     ]
     for query in queries:
-        response = graph_pipeline("How is Mark Zukerberg related to Mukesh Ambani?")
+        response = graph_pipeline(query)
         print(response)
