@@ -17,7 +17,7 @@ llm = ChatOpenAI(
 llm1 = ChatNVIDIA(
     model="meta/llama-3.3-70b-instruct",
     temperature=0,
-    api_key="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"
+    api_key=os.getenv("NVIDIA_API_KEY")
 )
 
 CYPHER_GENERATION_TEMPLATE = """
