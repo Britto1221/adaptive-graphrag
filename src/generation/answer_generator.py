@@ -6,10 +6,16 @@ from src.graph.neo4j_client import neo4j_manager
 load_dotenv()
 from langchain_neo4j import GraphCypherQAChain
 from src.generation.prompt_templates import get_hybrid_rag_prompt
+from langchain_nvidia_ai_endpoints import ChatNVIDIA
 
 if not os.getenv("OPENAI_API_KEY"):
     raise ValueError("OPENAI_API_KEY is missing from the .env file.")
 
+llm1 = ChatNVIDIA(
+    model="meta/llama-3.3-70b-instruct",
+    temperature=0,
+    api_key="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"
+)
 
 llm = ChatOpenAI(
     model="gpt-4o-mini",

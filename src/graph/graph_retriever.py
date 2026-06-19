@@ -6,12 +6,19 @@ from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from src.graph.neo4j_client import neo4j_manager
 from langchain_neo4j import GraphCypherQAChain
+from langchain_nvidia_ai_endpoints import ChatNVIDIA
 
 llm = ChatOpenAI(
         model = 'gpt-4o-mini',
         api_key=os.getenv("OPENAI_API_KEY"),
         temperature=0
     )
+
+llm1 = ChatNVIDIA(
+    model="meta/llama-3.3-70b-instruct",
+    temperature=0,
+    api_key="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"
+)
 
 CYPHER_GENERATION_TEMPLATE = """
 You are an expert Neo4j Cypher query generator.
@@ -138,7 +145,7 @@ def get_graph_chain():
 
     return GraphCypherQAChain.from_llm(
         cypher_llm=llm,
-        qa_llm=llm,
+        qa_llm=llm1,
         graph=graph,
         cypher_prompt=cypher_prompt,
         qa_prompt=qa_prompt,

@@ -4,7 +4,7 @@ from langchain_core.tracers.context import tracing_v2_enabled
 
 
 
-def graph_pipeline(query: str, return_details: bool = False):
+def graph_pipeline(query: str, return_details: bool = True):
     graph_response = ask_graph(query)
 
     answer = graph_response.get("result", "")
@@ -23,6 +23,13 @@ def graph_pipeline(query: str, return_details: bool = False):
     return answer
 
 if __name__ == "__main__":
-    with tracing_v2_enabled():
+    queries = [
+        "Who is the richest person in the database?",
+        "What companies does Elon Musk own?",
+        "How is Mark Zuckerberg connected to Mukesh Ambani?",
+        "Which billionaires are connected to NVIDIA?",
+        "Who invested in Jio Platforms?"
+    ]
+    for query in queries:
         response = graph_pipeline("How is Mark Zukerberg related to Mukesh Ambani?")
-    print(response)
+        print(response)
