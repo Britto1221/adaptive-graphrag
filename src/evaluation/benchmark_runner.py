@@ -6,7 +6,7 @@ from src.pipelines.graph_rag import graph_pipeline
 from src.pipelines.vector_rag import vector_pipeline
 from src.pipelines.hybrid_rag import hybrid_pipeline
 from src.evaluation.answer_evaluator import evaluate_answer
-
+from src.evaluation.performance.resource_monitor import get_system_snapshot
 PIPELINE_NAME = "graph_rag"
 CYPHER_MODEL = "openai"
 ANSWER_MODEL = "openai"
@@ -55,6 +55,20 @@ CSV_HEADERS = [
     "batch_id",
 
     "local_latency_seconds",
+
+    "fine_tuned",
+
+    "cpu_percent_before",
+    "ram_used_mb_before",
+    "ram_available_mb_before",
+    "ram_percent_before",
+            
+    "cpu_percent_after",
+    "ram_used_mb_after",
+    "ram_available_mb_after",
+    "ram_percent_after",
+            
+    "ram_delta_mb",
 ]
 
 
@@ -117,11 +131,14 @@ def normalize_eval(eval_result) -> dict:
 
 def run_one_question(question_row: dict) -> dict:
     """Run one question through GraphRAG and evaluate the answer."""
+
     query = question_row["question"]
+    before = get_system_snapshot()
     start_time = time.perf_counter()
     try:
         result = vector_pipeline(query)
         local_latency_seconds = time.perf_counter() - start_time
+        after = get_system_snapshot()
         answer = result.get("answer", "")
         graph_evidence = result.get("graph_evidence", "")
         vector_evidence = result.get("vector_evidence", "")
@@ -181,6 +198,20 @@ def run_one_question(question_row: dict) -> dict:
             "batch_id":batch_id,
 
             "local_latency_seconds":local_latency_seconds,
+
+            "fine_tuned":"False",
+
+            "cpu_percent_before": before["cpu_percent"],
+            "ram_used_mb_before": before["ram_used_mb"],
+            "ram_available_mb_before": before["ram_available_mb"],
+            "ram_percent_before": before["ram_percent"],
+            
+            "cpu_percent_after": after["cpu_percent"],
+            "ram_used_mb_after": after["ram_used_mb"],
+            "ram_available_mb_after": after["ram_available_mb"],
+            "ram_percent_after": after["ram_percent"],
+
+            "ram_delta_mb":after["ram_used_mb"] - before["ram_used_mb"],
         }
 
     except Exception as e:
@@ -222,6 +253,20 @@ def run_one_question(question_row: dict) -> dict:
             "batch_id":batch_id,
 
             "local_latency_seconds":local_latency_seconds,
+
+            "fine_tuned":"False",
+
+            "cpu_percent_before": before["cpu_percent"],
+            "ram_used_mb_before": before["ram_used_mb"],
+            "ram_available_mb_before": before["ram_available_mb"],
+            "ram_percent_before": before["ram_percent"],
+            
+            "cpu_percent_after": after["cpu_percent"],
+            "ram_used_mb_after": after["ram_used_mb"],
+            "ram_available_mb_after": after["ram_available_mb"],
+            "ram_percent_after": after["ram_percent"],
+
+            "ram_delta_mb":after["ram_used_mb"] - before["ram_used_mb"],
         }
 
 
