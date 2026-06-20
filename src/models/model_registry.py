@@ -9,8 +9,8 @@ MODELS = {
     "groq":        groq_provider(),
     "qwen-base":   ollama_provider("qwen2.5:1.5b"),
     "qwen-ft":     ollama_provider("qwen-finetuned"),
-    "gemma-base":  ollama_provider("gemma2:2b"),
-    "gemma-ft":    ollama_provider("gemma-finetuned"),
+    "gemma-base":  ollama_provider("llama3.2:1b"),
+    "gemma-ft":    ollama_provider("llama-finetuned"),
 }
 
 def get_model(model_name: str):
