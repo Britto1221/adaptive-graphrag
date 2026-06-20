@@ -1,29 +1,15 @@
-import os
-from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
 from src.generation.prompt_templates import get_rag_prompt
 from src.graph.neo4j_client import neo4j_manager
-load_dotenv()
+from src.models.model_registry import get_model
 from langchain_neo4j import GraphCypherQAChain
 from src.generation.prompt_templates import get_hybrid_rag_prompt
-from langchain_nvidia_ai_endpoints import ChatNVIDIA
 
-if not os.getenv("OPENAI_API_KEY"):
-    raise ValueError("OPENAI_API_KEY is missing from the .env file.")
+answer_model ="openai"
 
-llm1 = ChatNVIDIA(
-    model="meta/llama-3.3-70b-instruct",
-    temperature=0,
-    api_key="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"
-)
-
-llm = ChatOpenAI(
-    model="gpt-4o-mini",
-    api_key=os.getenv("OPENAI_API_KEY"),
-    temperature=0,
-)
+llm = get_model(answer_model)
 
 
+llm1 = get_model("openai")
 def format_context(chunks):
     context_parts = []
 
@@ -59,7 +45,7 @@ def generate_answer(query, chunks):
 
 def graph_answer(query,cypher_prompt,qa_prompt):
     chain = GraphCypherQAChain.from_llm(
-        cypher_llm=llm,
+        cypher_llm=llm1,
         qa_llm=llm,
         graph=neo4j_manager(),
         cypher_prompt=cypher_prompt,

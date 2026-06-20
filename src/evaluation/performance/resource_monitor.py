@@ -9,9 +9,3 @@ def get_system_snapshot():
         "ram_percent": psutil.virtual_memory().percent
     }
 
-def get_resource_delta(before: dict, after: dict):
-    return {
-        "cpu_peak_percent": after["cpu_percent"],
-        "ram_delta_mb": after["ram_used_mb"] - before["ram_used_mb"],
-        "ram_peak_percent": after["ram_percent"]
-    }
