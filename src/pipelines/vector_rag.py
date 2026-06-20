@@ -8,13 +8,13 @@ from src.evaluation.evidence_formatter import format_vector_evidence
 CHUNKS = load_saved_chunks()
 
 
-def vector_pipeline(query: str, return_details: bool = False):
+def vector_pipeline(query: str, return_details: bool = True):
     chunks = hybrid_retriever(query, CHUNKS)
 
     reranked = rerank_documents(
         query=query,
         documents=chunks,
-        top_k=3,
+        top_k=5,
     )
 
     vector_evidence = format_vector_evidence(reranked)
@@ -28,8 +28,9 @@ def vector_pipeline(query: str, return_details: bool = False):
             "evidence": vector_evidence,
             "vector_evidence": vector_evidence,
             "graph_evidence": "none",
-            "retrieved_chunks_count": len(chunks),
-            "reranked_chunks_count": len(reranked),
+            "evidence": vector_evidence,
+            "generated_cypher": "",
+            "graph_context_count": 0,
         }
 
     return answer

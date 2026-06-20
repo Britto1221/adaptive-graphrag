@@ -3,14 +3,16 @@ import csv
 from pathlib import Path
 import time
 from src.pipelines.graph_rag import graph_pipeline
+from src.pipelines.vector_rag import vector_pipeline
+from src.pipelines.hybrid_rag import hybrid_pipeline
 from src.evaluation.answer_evaluator import evaluate_answer
 
 PIPELINE_NAME = "graph_rag"
 CYPHER_MODEL = "openai"
 ANSWER_MODEL = "openai"
-experiment_name="GraphRAG + OpenAI answer"
+experiment_name="VectorRAG + OpenAI answer"
 langsmith_project_name="graphrag-graph-openai"
-batch_id="exp-batch-01"
+batch_id="exp-batch-02"
 
 QUESTIONS_FILE = Path("data/benchmark/questions/evaluation_questions.jsonl")
 RESULTS_FILE = Path("reports/benchmark_results.csv")
@@ -118,23 +120,30 @@ def run_one_question(question_row: dict) -> dict:
     query = question_row["question"]
     start_time = time.perf_counter()
     try:
-        result = graph_pipeline(query)
+        result = vector_pipeline(query)
         local_latency_seconds = time.perf_counter() - start_time
         answer = result.get("answer", "")
         graph_evidence = result.get("graph_evidence", "")
         vector_evidence = result.get("vector_evidence", "")
-
+        evidence = [graph_evidence,vector_evidence]
         generated_cypher, context_count = get_cypher_and_context_count(result)
 
         eval_result = evaluate_answer(
             question=query,
             expected_answer=str(question_row.get("expected_answer", "")),
             answer=answer,
-            evidence=graph_evidence,
+            evidence=evidence,
         )
 
         scores = normalize_eval(eval_result)
+        print("\nANSWER:")
+        print(result.get("answer", ""))
 
+        print("\nVECTOR EVIDENCE:")
+        print(result.get("vector_evidence", "")[:1000])
+
+        print("\nEVALUATOR REASON:")
+        print(scores.get("reason", ""))
         return {
             "run_id":"",
 
@@ -241,4 +250,4 @@ def run_benchmark(limit: int | None = 5) -> None:
     print("\nBenchmark completed.")
 
 if __name__ == "__main__":
-    run_benchmark(limit=20)
+    run_benchmark(limit=1)
