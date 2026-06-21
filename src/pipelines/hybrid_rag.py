@@ -10,7 +10,8 @@ from src.evaluation.evidence_formatter import (
 from langchain_core.tracers.context import tracing_v2_enabled
 CHUNKS = load_saved_chunks() 
 
-def hybrid_pipeline(query:str,return_details: bool = False):
+def hybrid_pipeline(query:str,embeddings,return_details: bool = False):
+    embeddings=embeddings
     chunks = hybrid_retriever(query, CHUNKS)
     reranked = rerank_documents(query, chunks)
     graph_response = ask_graph(query)

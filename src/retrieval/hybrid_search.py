@@ -3,10 +3,10 @@ from src.retrieval.dense_retriever import get_similar_docs
 from langchain_core.documents import Document
 
 
-def hybrid_retriever(query:str,chunks:list[Document])->list[Document]:
+def hybrid_retriever(query:str,embeddings,chunks:list[Document])->list[Document]:
     final_retrieved_docs:list[Document] = []
     final_retrieved_docs.extend(bm25_retriever(query,chunks))
-    final_retrieved_docs.extend(get_similar_docs(query))
+    final_retrieved_docs.extend(get_similar_docs(query,embeddings))
 
     seen = set()
     unique_docs = []

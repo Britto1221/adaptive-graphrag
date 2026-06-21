@@ -7,12 +7,15 @@ from src.pipelines.vector_rag import vector_pipeline
 from src.pipelines.hybrid_rag import hybrid_pipeline
 from src.evaluation.answer_evaluator import evaluate_answer
 from src.evaluation.performance.resource_monitor import get_system_snapshot
-PIPELINE_NAME = "graph_rag"
-CYPHER_MODEL = "openai"
+from src.retrieval.embeddings import get_embedding_model
+from src.ingestion.chunker import load_saved_chunks
+
+PIPELINE_NAME = "vector_rag"
+CYPHER_MODEL = "none"
 ANSWER_MODEL = "openai"
 experiment_name="VectorRAG + OpenAI answer"
-langsmith_project_name="graphrag-graph-openai"
-batch_id="exp-batch-02"
+langsmith_project_name="vectorrag-openai"
+batch_id="exp-batch-01"
 
 QUESTIONS_FILE = Path("data/benchmark/questions/evaluation_questions.jsonl")
 RESULTS_FILE = Path("reports/benchmark_results.csv")
@@ -93,7 +96,6 @@ def create_csv_if_needed() -> None:
             writer = csv.DictWriter(f, fieldnames=CSV_HEADERS)
             writer.writeheader()
 
-
 def get_cypher_and_context_count(result: dict) -> tuple[str, int]:
     """Extract generated Cypher and graph context count."""
     steps = result.get("raw_graph_response", {}).get("intermediate_steps", [])
@@ -128,15 +130,14 @@ def normalize_eval(eval_result) -> dict:
         "reason": eval_result.get("reason", ""),
     }
 
-
-def run_one_question(question_row: dict) -> dict:
+def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
     """Run one question through GraphRAG and evaluate the answer."""
-
+    embeddings = embedding_model
     query = question_row["question"]
     before = get_system_snapshot()
     start_time = time.perf_counter()
     try:
-        result = vector_pipeline(query)
+        result = vector_pipeline(query,embeddings,CHUNKS)
         local_latency_seconds = time.perf_counter() - start_time
         after = get_system_snapshot()
         answer = result.get("answer", "")
@@ -178,7 +179,7 @@ def run_one_question(question_row: dict) -> dict:
             "graph_context_count": context_count,
 
             "answer": answer,
-            "graph_evidence": graph_evidence,
+            "graph_evidence": "none",
             "vector_evidence": vector_evidence,
 
             "correctness_score": scores["correctness_score"],
@@ -283,11 +284,13 @@ def run_benchmark(limit: int | None = 5) -> None:
     create_csv_if_needed()
     print(f"Loaded {len(questions)} questions")
     print(f"Saving results to {RESULTS_FILE}")
+    CHUNKS = load_saved_chunks()
+    embeddings = get_embedding_model()
     for index, question_row in enumerate(questions, start=1):
         print("\n" + "=" * 80)
         print(f"Running question {index}/{len(questions)}")
         print(f"Query: {question_row['question']}")
-        row = run_one_question(question_row)
+        row = run_one_question(question_row,embeddings,CHUNKS)
         save_row(row)
         print(f"Overall score: {row['overall_score']}")
         if row["error_type"]:

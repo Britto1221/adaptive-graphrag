@@ -1,4 +1,7 @@
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 def nvidia_provider():
     return ChatNVIDIA(

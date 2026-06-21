@@ -1,5 +1,7 @@
 from langchain_groq import ChatGroq
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 def groq_provider():
     return ChatGroq(
         model="llama-3.3-70b-versatile",
