@@ -1,1 +1,330 @@
 run_id,question_id,category,question,is_answerable,expected_evidence_type,pipeline,cypher_model,answer_model,generated_cypher,graph_context_count,answer,graph_evidence,vector_evidence,correctness_score,faithfulness_score,hallucination_score,evidence_score,refusal_score,overall_score,evidence_used,reason,error_type,error_message,experiment_name,langsmith_project_name,batch_id,local_latency_seconds,fine_tuned,cpu_percent_before,ram_used_mb_before,ram_available_mb_before,ram_percent_before,cpu_percent_after,ram_used_mb_after,ram_available_mb_after,ram_percent_after,ram_delta_mb
+exp-batch-01_vector_rag_openai_q046,q046,unanswerable,What is the current live stock price of Tesla right now?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: Tesla, Samsung Electronics, Elon Musk are connected through a CHIP_SUPPLY_AGREEMENT relationship. Tesla and Samsung Electronics entered a $16.5 billion semiconductor supply agreement under which Samsung's Texas facility is expected to produce Tesla's next-generation AI6 chips. The relationship applies to 2025-07-28 and is identified in the corpus as REL-015. The source label for this relationship is Reuters.
+
+[Chunk 2]
+chunk_id: chunk_2
+text: ELON MUSK Elon Musk was ranked number 1 in the dataset snapshot, with an estimated net worth of $839 billion. The ranking associated Elon Musk with United States, and the recorded birth year is 1971. The primary source of wealth is described as Tesla and SpaceX. The main companies and organizations connected to this fortune are Tesla, SpaceX, Starlink, X, xAI, Neuralink, and The Boring Company. Elon Musk is an entrepreneur whose wealth is primarily linked to ownership stakes in Tesla and SpaceX
+
+[Chunk 3]
+chunk_id: chunk_3
+text: . Tesla signed a long-term semiconductor supply agreement with Samsung Electronics for next-generation AI chips. Finally, Tesla competes with global automobile manufacturers while also purchasing chips, batteries, displays, and manufacturing equipment from external suppliers.
+
+[Chunk 4]
+chunk_id: chunk_4
+text: . Tesla develops electric vehicles, battery-storage systems, charging infrastructure, solar products, artificial-intelligence systems, and humanoid robotics. SpaceX develops reusable rockets, spacecraft, satellite-launch services, and the Starlink satellite-internet network. Musk also controls X, founded xAI, and is associated with Neuralink and The Boring Company
+
+[Chunk 5]
+chunk_id: chunk_5
+text: Alphabet/Google, SpaceX, Larry Page, Sergey Brin, Elon Musk are connected through a INVESTED_IN relationship. Google and Fidelity invested about $1 billion in SpaceX in January 2015. The two investors collectively received just under 10 percent at the time. The relationship applies to 2015-01-20 and is identified in the corpus as REL-001. The source label for this relationship is Reuters.",1,1,5,1,5,1,vector,"The pipeline answer correctly identifies that there is not enough information to answer the question about Tesla's current stock price, which aligns with the evidence provided. However, the answer does not provide any relevant evidence or context that could support the claim, leading to low scores in correctness, faithfulness, and evidence.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,7.81033429998206,False,26.4,675.5,743.03125,90.6,17.5,740.296875,661.5859375,91.6,64.796875
+exp-batch-01_vector_rag_openai_q047,q047,unanswerable,What is Jeff Bezos's private home address?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: . Jeff Bezos founded Amazon as an online bookstore and expanded it into a global e-commerce, logistics, digital-media, advertising, hardware, and cloud-computing company. Amazon Web Services, known as AWS, provides cloud infrastructure, databases, storage, analytics, artificial intelligence, and enterprise software. Bezos also founded Blue Origin, a private space company, and owns The Washington Post through a private holding company. His wealth remains strongly tied to Amazon shares
+
+[Chunk 2]
+chunk_id: chunk_2
+text: JEFF BEZOS Jeff Bezos was ranked number 4 in the dataset snapshot, with an estimated net worth of $224 billion. The ranking associated Jeff Bezos with United States, and the recorded birth year is 1964. The primary source of wealth is described as Amazon. The main companies and organizations connected to this fortune are Amazon, Amazon Web Services, Blue Origin, and The Washington Post
+
+[Chunk 3]
+chunk_id: chunk_3
+text: Walmart, Amazon, Walton family, Jeff Bezos are connected through a COMPETES_WITH relationship. Walmart and Amazon compete in physical retail, e-commerce, advertising, logistics, online marketplaces, subscription programs, and delivery services. The relationship applies to Ongoing and is identified in the corpus as REL-017. The source label for this relationship is Company business descriptions.
+
+[Chunk 4]
+chunk_id: chunk_4
+text: SpaceX, Blue Origin, Elon Musk, Jeff Bezos are connected through a COMPETES_WITH relationship. SpaceX and Blue Origin compete in commercial launch services, reusable rockets, space infrastructure, government contracts, and long-term human-spaceflight ambitions. The relationship applies to Ongoing and is identified in the corpus as REL-018. The source label for this relationship is Company business descriptions.
+
+[Chunk 5]
+chunk_id: chunk_5
+text: . SIG is active in options trading, market making, quantitative trading, technology, private investments, and venture capital. Yass's fortune is linked to his ownership in SIG and the firm's investments. The wider company network connected to Jeff Yass includes several important relationships. Susquehanna was an early investor in ByteDance, the company founded by Zhang Yiming. Vastmere Strategic Investments, an affiliate of Susquehanna, is part of the TikTok USDS investor consortium",5,5,1,5,5,5,vector,"The pipeline answer correctly states that there is not enough information to provide Jeff Bezos's private home address, which aligns with the expected answer. The evidence used confirms that the dataset does not contain relevant information regarding his private address, thus supporting the refusal.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.818788200005656,False,24.5,740.546875,662.26953125,91.6,14.3,744.02734375,687.91015625,91.3,3.48046875
+exp-batch-01_vector_rag_openai_q048,q048,unanswerable,Which political party does Sergey Brin support?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: . Google's search and advertising businesses became the foundation of Alphabet. Brin served as president of Alphabet and has remained closely associated with the company's technology and artificial-intelligence activities. His fortune is largely derived from Alphabet shares. Through Alphabet, Brin is economically connected to Google Cloud, YouTube, Android, Waymo, DeepMind, and other Alphabet subsidiaries. The wider company network connected to Sergey Brin includes several important relationships
+
+[Chunk 2]
+chunk_id: chunk_2
+text: SERGEY BRIN Sergey Brin was ranked number 3 in the dataset snapshot, with an estimated net worth of $237 billion. The ranking associated Sergey Brin with United States, and the recorded birth year is 1973. The primary source of wealth is described as Google. The main companies and organizations connected to this fortune are Google and Alphabet. Sergey Brin co-founded Google with Larry Page after the two developed an internet search system at Stanford University
+
+[Chunk 3]
+chunk_id: chunk_3
+text: . Larry Page and Sergey Brin are connected through their joint founding of Google and continuing ownership in Alphabet. Alphabet invested in Elon Musk's SpaceX. Google Cloud has a long-running technology partnership with NVIDIA. Finally, Google acquired a 7.73 percent stake in Mukesh Ambani's Jio Platforms in 2020.
+
+[Chunk 4]
+chunk_id: chunk_4
+text: . Sergey Brin and Larry Page are co-founders of Google. Alphabet's investment in SpaceX links Brin's main source of wealth to Elon Musk's aerospace company. Google Cloud's collaboration with NVIDIA connects Alphabet to Jensen Huang's company. Finally, Google's investment in Jio Platforms connects Alphabet to Mukesh Ambani's Reliance group.
+
+[Chunk 5]
+chunk_id: chunk_5
+text: LVMH, Google Cloud, Bernard Arnault, Larry Page, Sergey Brin are connected through a USES_CLOUD_AND_AI_SERVICES_FROM relationship. LVMH has worked with Google Cloud to build a secure data and AI foundation serving luxury brands across the LVMH group. The relationship applies to 2021-2026 and is identified in the corpus as REL-009. The source label for this relationship is Google Cloud.",1,1,5,1,5,1,vector,"The pipeline answer correctly identifies that there is not enough information to answer the question about Sergey Brin's political party support. However, the evidence provided does not contain any relevant information regarding his political affiliations, leading to low scores in correctness, faithfulness, and evidence. The refusal score is high because the model correctly refused to answer based on the evidence.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.4725032999995165,False,20.0,744.02734375,817.87890625,89.7,22.9,744.4375,811.671875,89.7,0.41015625
+exp-batch-01_vector_rag_openai_q049,q049,unanswerable,What are Berkshire Hathaway's current portfolio holdings today?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: . Berkshire Hathaway connects to many public companies through equity investments, although those holdings change over time. Its insurance operations generate capital that can be invested in operating businesses and public securities. Finally, For retrieval accuracy, current Berkshire portfolio positions should be verified from the latest regulatory filing rather than assumed from older reports.
+
+[Chunk 2]
+chunk_id: chunk_2
+text: . Berkshire owns insurance, railroad, energy, manufacturing, retail, industrial, and service businesses and also maintains a large portfolio of public-company investments. Major wholly owned operations have included GEICO, BNSF Railway, Berkshire Hathaway Energy, and numerous manufacturing and consumer businesses. Buffett is known for long-term value investing and capital allocation. The wider company network connected to Warren Buffett includes several important relationships
+
+[Chunk 3]
+chunk_id: chunk_3
+text: WARREN BUFFETT Warren Buffett was ranked number 9 in the dataset snapshot, with an estimated net worth of $149 billion. The ranking associated Warren Buffett with United States, and the recorded birth year is 1930. The primary source of wealth is described as Berkshire Hathaway. The main companies and organizations connected to this fortune are Berkshire Hathaway. Warren Buffett built his fortune through Berkshire Hathaway, a diversified holding company
+
+[Chunk 4]
+chunk_id: chunk_4
+text: . Julia Koch's family and Charles Koch's family are connected through shared ownership of Koch Industries. Koch Industries owns and invests in numerous operating companies through subsidiaries and investment arms. Finally, Because Koch Industries is private, current ownership percentages and subsidiary structures should be verified from official company information.
+
+[Chunk 5]
+chunk_id: chunk_5
+text: ROB WALTON AND FAMILY Rob Walton And Family was ranked number 11 in the dataset snapshot, with an estimated net worth of $146 billion. The ranking associated Rob Walton And Family with United States, and the recorded birth year is 1944. The primary source of wealth is described as Walmart. The main companies and organizations connected to this fortune are Walmart and Walton family holdings",1,1,5,1,5,1,vector,"The pipeline answer correctly identifies that there is not enough information to answer the question about Berkshire Hathaway's current portfolio holdings. However, the evidence provided does not contain specific details about the current portfolio, leading to low scores in correctness, faithfulness, and evidence. The refusal score is high because the model correctly refused to answer based on the evidence.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.6635120999999344,False,16.3,744.4453125,811.390625,89.8,27.0,750.69921875,803.65625,89.8,6.25390625
+exp-batch-01_vector_rag_openai_q050,q050,unanswerable,What is the exact current ownership percentage of each Koch Industries shareholder?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: . Julia Koch's family and Charles Koch's family are connected through shared ownership of Koch Industries. Koch Industries owns and invests in numerous operating companies through subsidiaries and investment arms. Finally, Because Koch Industries is private, current ownership percentages and subsidiary structures should be verified from official company information.
+
+[Chunk 2]
+chunk_id: chunk_2
+text: . Charles Koch and Julia Koch's family are linked through common ownership of Koch Industries. Koch Industries controls multiple subsidiaries and investment businesses. Finally, Its companies buy from, sell to, invest in, and compete with businesses across energy, manufacturing, electronics, software, and consumer markets.
+
+[Chunk 3]
+chunk_id: chunk_3
+text: . Julia Koch and her children inherited a large ownership interest in Koch Industries after the death of her husband, David Koch. Koch Industries is a privately held conglomerate with businesses in manufacturing, chemicals, refining, energy, materials, industrial technology, consumer products, electronics, software, and investments. The family's wealth is tied to private ownership in the group. The wider company network connected to Julia Koch And Family includes several important relationships
+
+[Chunk 4]
+chunk_id: chunk_4
+text: JULIA KOCH AND FAMILY Julia Koch And Family was ranked number 24 in the dataset snapshot, with an estimated net worth of $81.2 billion. The ranking associated Julia Koch And Family with United States, and the recorded birth year is 1962. The primary source of wealth is described as Koch Industries. The main companies and organizations connected to this fortune are Koch Industries family ownership
+
+[Chunk 5]
+chunk_id: chunk_5
+text: . Charles Koch has led Koch Industries for decades. The company grew from an industrial and energy base into a large private conglomerate operating across refining, chemicals, engineered systems, materials, electronics, software, consumer products, and investment activities. His wealth is tied to the family's ownership of Koch Industries. The wider company network connected to Charles Koch And Family includes several important relationships",1,1,5,1,5,1,vector,"The pipeline answer correctly identifies that the question is unanswerable based on the provided evidence, which does not contain specific ownership percentages. However, the answer does not provide any useful information or context from the evidence, leading to low scores across all categories.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.5758204000012483,False,8.9,750.69921875,804.6484375,89.8,24.1,750.94921875,797.83984375,89.9,0.25
+exp-batch-01_vector_rag_openai_q051,q051,unanswerable,What is Binance's current regulatory status in every jurisdiction?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: . Binance has offered trading, custody, blockchain infrastructure, token services, and other digital-asset products. Zhao stepped down as chief executive in 2023. His wealth is linked to ownership interests in Binance and cryptocurrency assets. The wider company network connected to Changpeng Zhao includes several important relationships. Binance competes with other cryptocurrency exchanges and interacts with stablecoin issuers such as Tether
+
+[Chunk 2]
+chunk_id: chunk_2
+text: . Tether's USDT stablecoin is widely used across cryptocurrency markets, creating an operational relationship between exchanges and Tether. Finally, Regulatory status, ownership, and product availability vary by jurisdiction and should be verified for current use.
+
+[Chunk 3]
+chunk_id: chunk_3
+text: CHANGPENG ZHAO Changpeng Zhao was ranked number 17 in the dataset snapshot, with an estimated net worth of $110 billion. The ranking associated Changpeng Zhao with Canada, and the recorded birth year is 1977. The primary source of wealth is described as Cryptocurrency exchange. The main companies and organizations connected to this fortune are Binance. Changpeng Zhao, commonly known as CZ, founded Binance, a global cryptocurrency exchange and blockchain ecosystem
+
+[Chunk 4]
+chunk_id: chunk_4
+text: . Berkshire Hathaway connects to many public companies through equity investments, although those holdings change over time. Its insurance operations generate capital that can be invested in operating businesses and public securities. Finally, For retrieval accuracy, current Berkshire portfolio positions should be verified from the latest regulatory filing rather than assumed from older reports.
+
+[Chunk 5]
+chunk_id: chunk_5
+text: . Wantai works within pharmaceutical, diagnostics, research, healthcare, and regulatory ecosystems. Finally, Both companies depend on suppliers, distributors, technology providers, and public-market investors.",1,1,5,1,5,1,vector,"The pipeline answer correctly identifies that there is not enough information to answer the question about Binance's regulatory status in every jurisdiction. However, the evidence provided does not support any claims about regulatory status, leading to low scores in correctness, faithfulness, and evidence. The refusal score is high because the model correctly refused to answer based on the evidence.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.679820200020913,False,8.0,750.95703125,795.2265625,90.0,24.1,758.7421875,772.02734375,90.2,7.78515625
+exp-batch-01_vector_rag_openai_q052,q052,unanswerable,What is the latest exact valuation of Schwarz Group today?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: DIETER SCHWARZ Dieter Schwarz was ranked number 29 in the dataset snapshot, with an estimated net worth of $67.2 billion. The ranking associated Dieter Schwarz with Germany, and the recorded birth year is 1939. The primary source of wealth is described as Retail. The main companies and organizations connected to this fortune are Schwarz Group, Lidl, and Kaufland. Dieter Schwarz built his wealth through Schwarz Group, the private retail organization that controls Lidl and Kaufland
+
+[Chunk 2]
+chunk_id: chunk_2
+text: . Lidl is a discount supermarket chain, while Kaufland operates hypermarkets and other large-format retail businesses. The group also has logistics, production, recycling, digital, and technology operations. Schwarz's fortune is tied to private ownership of the group. The wider company network connected to Dieter Schwarz includes several important relationships. Schwarz Group competes with Walmart, Amazon, Aldi, Carrefour, and other retailers in various markets
+
+[Chunk 3]
+chunk_id: chunk_3
+text: . Lidl and Kaufland depend on large networks of food producers, consumer-goods suppliers, logistics providers, property owners, and technology partners. Finally, The group's private structure makes current ownership and valuation less transparent than publicly traded retailers.
+
+[Chunk 4]
+chunk_id: chunk_4
+text: GERMAN LARREA MOTA VELASCO AND FAMILY German Larrea Mota Velasco And Family was ranked number 30 in the dataset snapshot, with an estimated net worth of $67.1 billion. The ranking associated German Larrea Mota Velasco And Family with Mexico, and the recorded birth year is 1953. The primary source of wealth is described as Mining. The main companies and organizations connected to this fortune are Grupo Mexico, Southern Copper, and Grupo Mexico Transportes
+
+[Chunk 5]
+chunk_id: chunk_5
+text: . Berkshire Hathaway connects to many public companies through equity investments, although those holdings change over time. Its insurance operations generate capital that can be invested in operating businesses and public securities. Finally, For retrieval accuracy, current Berkshire portfolio positions should be verified from the latest regulatory filing rather than assumed from older reports.",1,1,5,1,5,1,vector,"The pipeline answer correctly identifies that there is not enough information to provide the latest valuation of Schwarz Group, which aligns with the evidence provided. However, the answer does not match the expected answer, and the evidence does not support any claims about the current valuation, leading to low scores in correctness, faithfulness, and evidence.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.988876399991568,False,34.0,758.7421875,772.2265625,90.2,21.7,758.95703125,825.12109375,89.6,0.21484375
+exp-batch-01_vector_rag_openai_q046,q046,unanswerable,What is the current live stock price of Tesla right now?,False,none,vector_rag,none,openai,,0,,,,0,0,0,0,0,0,vector,,KeyError,"'\n""correctness_score""'",VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,7.174518399988301,False,18.6,673.6796875,526.53515625,93.3,22.8,734.4296875,779.375,90.2,60.75
+exp-batch-01_vector_rag_openai_q047,q047,unanswerable,What is Jeff Bezos's private home address?,False,none,vector_rag,none,openai,,0,,,,0,0,0,0,0,0,vector,,KeyError,"'\n""correctness_score""'",VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.5708050999965053,False,22.4,734.44140625,774.015625,90.2,21.2,738.453125,757.56640625,90.4,4.01171875
+exp-batch-01_vector_rag_openai_q048,q048,unanswerable,Which political party does Sergey Brin support?,False,none,vector_rag,none,openai,,0,,,,0,0,0,0,0,0,vector,,KeyError,"'\n""correctness_score""'",VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.4787580000120215,False,27.6,738.4609375,757.55078125,90.4,20.4,738.80859375,743.625,90.6,0.34765625
+exp-batch-01_vector_rag_openai_q049,q049,unanswerable,What are Berkshire Hathaway's current portfolio holdings today?,False,none,vector_rag,none,openai,,0,,,,0,0,0,0,0,0,vector,,KeyError,"'\n""correctness_score""'",VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.789328899991233,False,21.1,738.81640625,742.13671875,90.6,27.1,745.62890625,710.0625,91.0,6.8125
+exp-batch-01_vector_rag_openai_q050,q050,unanswerable,What is the exact current ownership percentage of each Koch Industries shareholder?,False,none,vector_rag,none,openai,,0,,,,0,0,0,0,0,0,vector,,KeyError,"'\n""correctness_score""'",VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.380411999998614,False,23.2,745.640625,710.59765625,91.0,25.0,745.74609375,697.125,91.2,0.10546875
+exp-batch-01_vector_rag_openai_q051,q051,unanswerable,What is Binance's current regulatory status in every jurisdiction?,False,none,vector_rag,none,openai,,0,,,,0,0,0,0,0,0,vector,,KeyError,"'\n""correctness_score""'",VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.5338901999930386,False,39.3,745.74609375,696.6796875,91.2,28.0,753.72265625,681.7578125,91.4,7.9765625
+exp-batch-01_vector_rag_openai_q052,q052,unanswerable,What is the latest exact valuation of Schwarz Group today?,False,none,vector_rag,none,openai,,0,,,,0,0,0,0,0,0,vector,,KeyError,"'\n""correctness_score""'",VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.58518140000524,False,26.8,753.72265625,683.19921875,91.4,72.0,753.83203125,638.9921875,91.9,0.109375
+exp-batch-01_vector_rag_openai_q046,q046,unanswerable,What is the current live stock price of Tesla right now?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: Tesla, Samsung Electronics, Elon Musk are connected through a CHIP_SUPPLY_AGREEMENT relationship. Tesla and Samsung Electronics entered a $16.5 billion semiconductor supply agreement under which Samsung's Texas facility is expected to produce Tesla's next-generation AI6 chips. The relationship applies to 2025-07-28 and is identified in the corpus as REL-015. The source label for this relationship is Reuters.
+
+[Chunk 2]
+chunk_id: chunk_2
+text: ELON MUSK Elon Musk was ranked number 1 in the dataset snapshot, with an estimated net worth of $839 billion. The ranking associated Elon Musk with United States, and the recorded birth year is 1971. The primary source of wealth is described as Tesla and SpaceX. The main companies and organizations connected to this fortune are Tesla, SpaceX, Starlink, X, xAI, Neuralink, and The Boring Company. Elon Musk is an entrepreneur whose wealth is primarily linked to ownership stakes in Tesla and SpaceX
+
+[Chunk 3]
+chunk_id: chunk_3
+text: . Tesla signed a long-term semiconductor supply agreement with Samsung Electronics for next-generation AI chips. Finally, Tesla competes with global automobile manufacturers while also purchasing chips, batteries, displays, and manufacturing equipment from external suppliers.
+
+[Chunk 4]
+chunk_id: chunk_4
+text: . Tesla develops electric vehicles, battery-storage systems, charging infrastructure, solar products, artificial-intelligence systems, and humanoid robotics. SpaceX develops reusable rockets, spacecraft, satellite-launch services, and the Starlink satellite-internet network. Musk also controls X, founded xAI, and is associated with Neuralink and The Boring Company
+
+[Chunk 5]
+chunk_id: chunk_5
+text: Alphabet/Google, SpaceX, Larry Page, Sergey Brin, Elon Musk are connected through a INVESTED_IN relationship. Google and Fidelity invested about $1 billion in SpaceX in January 2015. The two investors collectively received just under 10 percent at the time. The relationship applies to 2015-01-20 and is identified in the corpus as REL-001. The source label for this relationship is Reuters.",5,5,1,5,5,5,vector,"The pipeline answer correctly identifies that the question is unanswerable based on the provided evidence, which does not contain the current stock price of Tesla. The refusal is appropriate and does not invent any unsupported information.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,6.140556900005322,False,19.6,655.5,569.48828125,92.8,20.4,720.546875,524.67578125,93.4,65.046875
+exp-batch-01_vector_rag_openai_q047,q047,unanswerable,What is Jeff Bezos's private home address?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: . Jeff Bezos founded Amazon as an online bookstore and expanded it into a global e-commerce, logistics, digital-media, advertising, hardware, and cloud-computing company. Amazon Web Services, known as AWS, provides cloud infrastructure, databases, storage, analytics, artificial intelligence, and enterprise software. Bezos also founded Blue Origin, a private space company, and owns The Washington Post through a private holding company. His wealth remains strongly tied to Amazon shares
+
+[Chunk 2]
+chunk_id: chunk_2
+text: JEFF BEZOS Jeff Bezos was ranked number 4 in the dataset snapshot, with an estimated net worth of $224 billion. The ranking associated Jeff Bezos with United States, and the recorded birth year is 1964. The primary source of wealth is described as Amazon. The main companies and organizations connected to this fortune are Amazon, Amazon Web Services, Blue Origin, and The Washington Post
+
+[Chunk 3]
+chunk_id: chunk_3
+text: Walmart, Amazon, Walton family, Jeff Bezos are connected through a COMPETES_WITH relationship. Walmart and Amazon compete in physical retail, e-commerce, advertising, logistics, online marketplaces, subscription programs, and delivery services. The relationship applies to Ongoing and is identified in the corpus as REL-017. The source label for this relationship is Company business descriptions.
+
+[Chunk 4]
+chunk_id: chunk_4
+text: SpaceX, Blue Origin, Elon Musk, Jeff Bezos are connected through a COMPETES_WITH relationship. SpaceX and Blue Origin compete in commercial launch services, reusable rockets, space infrastructure, government contracts, and long-term human-spaceflight ambitions. The relationship applies to Ongoing and is identified in the corpus as REL-018. The source label for this relationship is Company business descriptions.
+
+[Chunk 5]
+chunk_id: chunk_5
+text: . SIG is active in options trading, market making, quantitative trading, technology, private investments, and venture capital. Yass's fortune is linked to his ownership in SIG and the firm's investments. The wider company network connected to Jeff Yass includes several important relationships. Susquehanna was an early investor in ByteDance, the company founded by Zhang Yiming. Vastmere Strategic Investments, an affiliate of Susquehanna, is part of the TikTok USDS investor consortium",5,5,1,5,5,5,vector,The pipeline answer correctly identifies that the question is unanswerable and does not invent any unsupported information. The refusal aligns with the expected behavior since the question is marked as unanswerable in the benchmark dataset.,,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,2.8564392999978736,False,44.0,720.74609375,539.53515625,93.2,17.4,724.58203125,530.1171875,93.3,3.8359375
+exp-batch-01_vector_rag_openai_q048,q048,unanswerable,Which political party does Sergey Brin support?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: . Google's search and advertising businesses became the foundation of Alphabet. Brin served as president of Alphabet and has remained closely associated with the company's technology and artificial-intelligence activities. His fortune is largely derived from Alphabet shares. Through Alphabet, Brin is economically connected to Google Cloud, YouTube, Android, Waymo, DeepMind, and other Alphabet subsidiaries. The wider company network connected to Sergey Brin includes several important relationships
+
+[Chunk 2]
+chunk_id: chunk_2
+text: SERGEY BRIN Sergey Brin was ranked number 3 in the dataset snapshot, with an estimated net worth of $237 billion. The ranking associated Sergey Brin with United States, and the recorded birth year is 1973. The primary source of wealth is described as Google. The main companies and organizations connected to this fortune are Google and Alphabet. Sergey Brin co-founded Google with Larry Page after the two developed an internet search system at Stanford University
+
+[Chunk 3]
+chunk_id: chunk_3
+text: . Larry Page and Sergey Brin are connected through their joint founding of Google and continuing ownership in Alphabet. Alphabet invested in Elon Musk's SpaceX. Google Cloud has a long-running technology partnership with NVIDIA. Finally, Google acquired a 7.73 percent stake in Mukesh Ambani's Jio Platforms in 2020.
+
+[Chunk 4]
+chunk_id: chunk_4
+text: . Sergey Brin and Larry Page are co-founders of Google. Alphabet's investment in SpaceX links Brin's main source of wealth to Elon Musk's aerospace company. Google Cloud's collaboration with NVIDIA connects Alphabet to Jensen Huang's company. Finally, Google's investment in Jio Platforms connects Alphabet to Mukesh Ambani's Reliance group.
+
+[Chunk 5]
+chunk_id: chunk_5
+text: LVMH, Google Cloud, Bernard Arnault, Larry Page, Sergey Brin are connected through a USES_CLOUD_AND_AI_SERVICES_FROM relationship. LVMH has worked with Google Cloud to build a secure data and AI foundation serving luxury brands across the LVMH group. The relationship applies to 2021-2026 and is identified in the corpus as REL-009. The source label for this relationship is Google Cloud.",5,5,1,5,5,5,vector,"The pipeline correctly identified that the question is unanswerable based on the provided evidence, which does not contain information about Sergey Brin's political party support. The refusal is appropriate and does not invent any unsupported facts.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.173844699980691,False,22.4,724.58984375,529.32421875,93.3,26.9,725.0078125,530.640625,93.3,0.41796875
+exp-batch-01_vector_rag_openai_q049,q049,unanswerable,What are Berkshire Hathaway's current portfolio holdings today?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: . Berkshire Hathaway connects to many public companies through equity investments, although those holdings change over time. Its insurance operations generate capital that can be invested in operating businesses and public securities. Finally, For retrieval accuracy, current Berkshire portfolio positions should be verified from the latest regulatory filing rather than assumed from older reports.
+
+[Chunk 2]
+chunk_id: chunk_2
+text: . Berkshire owns insurance, railroad, energy, manufacturing, retail, industrial, and service businesses and also maintains a large portfolio of public-company investments. Major wholly owned operations have included GEICO, BNSF Railway, Berkshire Hathaway Energy, and numerous manufacturing and consumer businesses. Buffett is known for long-term value investing and capital allocation. The wider company network connected to Warren Buffett includes several important relationships
+
+[Chunk 3]
+chunk_id: chunk_3
+text: WARREN BUFFETT Warren Buffett was ranked number 9 in the dataset snapshot, with an estimated net worth of $149 billion. The ranking associated Warren Buffett with United States, and the recorded birth year is 1930. The primary source of wealth is described as Berkshire Hathaway. The main companies and organizations connected to this fortune are Berkshire Hathaway. Warren Buffett built his fortune through Berkshire Hathaway, a diversified holding company
+
+[Chunk 4]
+chunk_id: chunk_4
+text: . Julia Koch's family and Charles Koch's family are connected through shared ownership of Koch Industries. Koch Industries owns and invests in numerous operating companies through subsidiaries and investment arms. Finally, Because Koch Industries is private, current ownership percentages and subsidiary structures should be verified from official company information.
+
+[Chunk 5]
+chunk_id: chunk_5
+text: ROB WALTON AND FAMILY Rob Walton And Family was ranked number 11 in the dataset snapshot, with an estimated net worth of $146 billion. The ranking associated Rob Walton And Family with United States, and the recorded birth year is 1944. The primary source of wealth is described as Walmart. The main companies and organizations connected to this fortune are Walmart and Walton family holdings",5,5,1,5,5,5,vector,"The pipeline correctly identifies that the question is unanswerable based on the provided evidence, which does not contain current portfolio holdings. The refusal is appropriate and does not invent any unsupported information.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,2.79409339997801,False,38.8,725.01171875,528.078125,93.3,31.2,731.5234375,515.1171875,93.5,6.51171875
+exp-batch-01_vector_rag_openai_q050,q050,unanswerable,What is the exact current ownership percentage of each Koch Industries shareholder?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: . Julia Koch's family and Charles Koch's family are connected through shared ownership of Koch Industries. Koch Industries owns and invests in numerous operating companies through subsidiaries and investment arms. Finally, Because Koch Industries is private, current ownership percentages and subsidiary structures should be verified from official company information.
+
+[Chunk 2]
+chunk_id: chunk_2
+text: . Charles Koch and Julia Koch's family are linked through common ownership of Koch Industries. Koch Industries controls multiple subsidiaries and investment businesses. Finally, Its companies buy from, sell to, invest in, and compete with businesses across energy, manufacturing, electronics, software, and consumer markets.
+
+[Chunk 3]
+chunk_id: chunk_3
+text: . Julia Koch and her children inherited a large ownership interest in Koch Industries after the death of her husband, David Koch. Koch Industries is a privately held conglomerate with businesses in manufacturing, chemicals, refining, energy, materials, industrial technology, consumer products, electronics, software, and investments. The family's wealth is tied to private ownership in the group. The wider company network connected to Julia Koch And Family includes several important relationships
+
+[Chunk 4]
+chunk_id: chunk_4
+text: JULIA KOCH AND FAMILY Julia Koch And Family was ranked number 24 in the dataset snapshot, with an estimated net worth of $81.2 billion. The ranking associated Julia Koch And Family with United States, and the recorded birth year is 1962. The primary source of wealth is described as Koch Industries. The main companies and organizations connected to this fortune are Koch Industries family ownership
+
+[Chunk 5]
+chunk_id: chunk_5
+text: . Charles Koch has led Koch Industries for decades. The company grew from an industrial and energy base into a large private conglomerate operating across refining, chemicals, engineered systems, materials, electronics, software, consumer products, and investment activities. His wealth is tied to the family's ownership of Koch Industries. The wider company network connected to Charles Koch And Family includes several important relationships",5,5,1,5,5,5,vector,"The pipeline answer correctly identifies that the question is unanswerable based on the provided evidence, which does not contain the requested ownership percentages. The refusal is appropriate and supported by the evidence, leading to high scores across all categories.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.274275600007968,False,30.0,731.5234375,513.1640625,93.5,44.0,731.87890625,504.19921875,93.6,0.35546875
+exp-batch-01_vector_rag_openai_q051,q051,unanswerable,What is Binance's current regulatory status in every jurisdiction?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: . Binance has offered trading, custody, blockchain infrastructure, token services, and other digital-asset products. Zhao stepped down as chief executive in 2023. His wealth is linked to ownership interests in Binance and cryptocurrency assets. The wider company network connected to Changpeng Zhao includes several important relationships. Binance competes with other cryptocurrency exchanges and interacts with stablecoin issuers such as Tether
+
+[Chunk 2]
+chunk_id: chunk_2
+text: . Tether's USDT stablecoin is widely used across cryptocurrency markets, creating an operational relationship between exchanges and Tether. Finally, Regulatory status, ownership, and product availability vary by jurisdiction and should be verified for current use.
+
+[Chunk 3]
+chunk_id: chunk_3
+text: CHANGPENG ZHAO Changpeng Zhao was ranked number 17 in the dataset snapshot, with an estimated net worth of $110 billion. The ranking associated Changpeng Zhao with Canada, and the recorded birth year is 1977. The primary source of wealth is described as Cryptocurrency exchange. The main companies and organizations connected to this fortune are Binance. Changpeng Zhao, commonly known as CZ, founded Binance, a global cryptocurrency exchange and blockchain ecosystem
+
+[Chunk 4]
+chunk_id: chunk_4
+text: . Berkshire Hathaway connects to many public companies through equity investments, although those holdings change over time. Its insurance operations generate capital that can be invested in operating businesses and public securities. Finally, For retrieval accuracy, current Berkshire portfolio positions should be verified from the latest regulatory filing rather than assumed from older reports.
+
+[Chunk 5]
+chunk_id: chunk_5
+text: . Wantai works within pharmaceutical, diagnostics, research, healthcare, and regulatory ecosystems. Finally, Both companies depend on suppliers, distributors, technology providers, and public-market investors.",5,5,1,5,5,5,vector,"The pipeline answer correctly identifies that the question is unanswerable based on the provided evidence, which does not contain sufficient information about Binance's regulatory status in every jurisdiction. The refusal is appropriate and supported by the evidence, leading to high scores across all categories.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.3697079999838024,False,44.1,731.87890625,496.09765625,93.7,24.1,740.0625,482.6953125,93.9,8.18359375
+exp-batch-01_vector_rag_openai_q052,q052,unanswerable,What is the latest exact valuation of Schwarz Group today?,False,none,vector_rag,none,openai,,0,The retrieved context does not contain enough information.,none,"Document: data\raw\top_30_richest_people_paragraph_corpus.txt
+
+All chunks below were retrieved from this document.
+
+[Chunk 1]
+chunk_id: chunk_1
+text: DIETER SCHWARZ Dieter Schwarz was ranked number 29 in the dataset snapshot, with an estimated net worth of $67.2 billion. The ranking associated Dieter Schwarz with Germany, and the recorded birth year is 1939. The primary source of wealth is described as Retail. The main companies and organizations connected to this fortune are Schwarz Group, Lidl, and Kaufland. Dieter Schwarz built his wealth through Schwarz Group, the private retail organization that controls Lidl and Kaufland
+
+[Chunk 2]
+chunk_id: chunk_2
+text: . Lidl is a discount supermarket chain, while Kaufland operates hypermarkets and other large-format retail businesses. The group also has logistics, production, recycling, digital, and technology operations. Schwarz's fortune is tied to private ownership of the group. The wider company network connected to Dieter Schwarz includes several important relationships. Schwarz Group competes with Walmart, Amazon, Aldi, Carrefour, and other retailers in various markets
+
+[Chunk 3]
+chunk_id: chunk_3
+text: . Lidl and Kaufland depend on large networks of food producers, consumer-goods suppliers, logistics providers, property owners, and technology partners. Finally, The group's private structure makes current ownership and valuation less transparent than publicly traded retailers.
+
+[Chunk 4]
+chunk_id: chunk_4
+text: GERMAN LARREA MOTA VELASCO AND FAMILY German Larrea Mota Velasco And Family was ranked number 30 in the dataset snapshot, with an estimated net worth of $67.1 billion. The ranking associated German Larrea Mota Velasco And Family with Mexico, and the recorded birth year is 1953. The primary source of wealth is described as Mining. The main companies and organizations connected to this fortune are Grupo Mexico, Southern Copper, and Grupo Mexico Transportes
+
+[Chunk 5]
+chunk_id: chunk_5
+text: . Berkshire Hathaway connects to many public companies through equity investments, although those holdings change over time. Its insurance operations generate capital that can be invested in operating businesses and public securities. Finally, For retrieval accuracy, current Berkshire portfolio positions should be verified from the latest regulatory filing rather than assumed from older reports.",5,5,1,5,5,5,vector,"The pipeline correctly identifies that the question is unanswerable based on the provided evidence, which does not contain the latest valuation of Schwarz Group. The refusal is appropriate and does not invent any unsupported information.",,,VectorRAG + OpenAI answer,adaptive-graphrag-vector-openai,exp-batch-01,3.9911527000076603,False,20.4,740.06640625,469.48828125,94.1,20.4,688.515625,574.046875,92.7,-51.55078125

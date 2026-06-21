@@ -14,7 +14,7 @@ PIPELINE_NAME = "vector_rag"
 CYPHER_MODEL = "none"
 ANSWER_MODEL = "openai"
 experiment_name="VectorRAG + OpenAI answer"
-langsmith_project_name="vectorrag-openai"
+langsmith_project_name="adaptive-graphrag-vector-openai"
 batch_id="exp-batch-01"
 
 QUESTIONS_FILE = Path("data/benchmark/questions/evaluation_questions.jsonl")
@@ -114,6 +114,14 @@ def get_cypher_and_context_count(result: dict) -> tuple[str, int]:
 
     return generated_cypher, context_count
 
+def parse_bool(value):
+    if isinstance(value, bool):
+        return value
+
+    if isinstance(value, str):
+        return value.strip().lower() in ["true", "1", "yes"]
+
+    return bool(value)
 
 def normalize_eval(eval_result) -> dict:
     """Convert evaluator result into a normal dictionary."""
@@ -145,12 +153,13 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
         vector_evidence = result.get("vector_evidence", "")
         evidence = [graph_evidence,vector_evidence]
         generated_cypher, context_count = get_cypher_and_context_count(result)
-
+        run_id = f"{batch_id}_{PIPELINE_NAME}_{ANSWER_MODEL}_{question_row.get('id', '')}"
         eval_result = evaluate_answer(
             question=query,
             expected_answer=str(question_row.get("expected_answer", "")),
             answer=answer,
             evidence=evidence,
+            is_answerable= parse_bool(question_row.get("is_answerable", "")),
         )
 
         scores = normalize_eval(eval_result)
@@ -163,7 +172,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
         print("\nEVALUATOR REASON:")
         print(scores.get("reason", ""))
         return {
-            "run_id":"",
+            "run_id":run_id,
 
             "question_id": question_row.get("id", ""),
             "category": question_row.get("category", ""),
@@ -188,7 +197,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
             "evidence_score": scores["evidence_score"],
             "refusal_score": scores["refusal_score"],
             "overall_score": scores["overall_score"],
-            "evidence_used": scores["evidence_used"],
+            "evidence_used": "vector",
             "reason":scores["reason"],
 
             "error_type": "",
@@ -218,7 +227,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
     except Exception as e:
         local_latency_seconds = time.perf_counter() - start_time
         return {
-            "run_id":"",
+            "run_id":run_id,
 
             "question_id": question_row.get("id", ""),
             "category": question_row.get("category", ""),
@@ -243,7 +252,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
             "evidence_score": 0,
             "refusal_score": 0,
             "overall_score": 0,
-            "evidence_used": "none",
+            "evidence_used": "vector",
             "reason": "",
 
             "error_type": type(e).__name__,
@@ -273,6 +282,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
 
 def save_row(row: dict) -> None:
     """Append one result row to CSV."""
+    
     with RESULTS_FILE.open("a", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=CSV_HEADERS, extrasaction="ignore")
         writer.writerow(row)
@@ -280,7 +290,7 @@ def save_row(row: dict) -> None:
 def run_benchmark(limit: int | None = 5) -> None:
     questions = load_questions()
     if limit is not None:
-        questions = questions[:limit]
+        questions = questions[45:limit]
     create_csv_if_needed()
     print(f"Loaded {len(questions)} questions")
     print(f"Saving results to {RESULTS_FILE}")
@@ -298,5 +308,5 @@ def run_benchmark(limit: int | None = 5) -> None:
     print("\nBenchmark completed.")
 
 if __name__ == "__main__":
-    run_benchmark(limit=1)
+    run_benchmark(limit=52)
     
