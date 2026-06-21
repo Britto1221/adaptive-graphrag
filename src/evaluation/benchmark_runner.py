@@ -309,4 +309,3 @@ def run_benchmark(limit: int | None = 5) -> None:
 
 if __name__ == "__main__":
     run_benchmark(limit=52)
-    
