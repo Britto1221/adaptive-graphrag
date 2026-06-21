@@ -298,5 +298,5 @@ def run_benchmark(limit: int | None = 5) -> None:
     print("\nBenchmark completed.")
 
 if __name__ == "__main__":
-    run_benchmark(limit=1)
+    run_benchmark(limit=1) 
     
