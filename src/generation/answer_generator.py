@@ -8,7 +8,6 @@ answer_model ="openai"
 
 llm = get_model(answer_model)
 
-
 llm1 = get_model("openai")
 def format_context(chunks):
     context_parts = []
@@ -23,9 +22,7 @@ def format_context(chunks):
             f"Reranker score: {score}\n"
             f"Content:\n{chunk.page_content}"
         )
-
     return "\n\n".join(context_parts)
-
 
 def generate_answer(query, chunks):
     context = format_context(chunks)

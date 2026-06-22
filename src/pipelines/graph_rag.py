@@ -1,8 +1,5 @@
 from src.graph.graph_retriever import ask_graph
 from src.evaluation.evidence_formatter import format_graph_evidence
-from langchain_core.tracers.context import tracing_v2_enabled
-
-
 
 def graph_pipeline(query: str, return_details: bool = True):
     graph_response = ask_graph(query)

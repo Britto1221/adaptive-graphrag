@@ -1,12 +1,7 @@
-
 from src.retrieval.reranker import rerank_documents
 from src.retrieval.hybrid_search import hybrid_retriever
 from src.generation.answer_generator import generate_answer
 from src.evaluation.evidence_formatter import format_vector_evidence
-
-
-
-
 
 def vector_pipeline(query: str,embeddings,CHUNKS, return_details: bool = True):
     chunks = hybrid_retriever(query,embeddings, CHUNKS)

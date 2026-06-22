@@ -7,12 +7,10 @@ from src.evaluation.evidence_formatter import (
     format_vector_evidence,
     format_graph_evidence,
 )
-from langchain_core.tracers.context import tracing_v2_enabled
-CHUNKS = load_saved_chunks() 
 
-def hybrid_pipeline(query:str,embeddings,return_details: bool = False):
+def hybrid_pipeline(query:str,embeddings,CHUNKS,return_details: bool = True):
     embeddings=embeddings
-    chunks = hybrid_retriever(query, CHUNKS)
+    chunks = hybrid_retriever(query, embeddings, CHUNKS)
     reranked = rerank_documents(query, chunks)
     graph_response = ask_graph(query)
 
@@ -49,11 +47,10 @@ def hybrid_pipeline(query:str,embeddings,return_details: bool = False):
     
 
 if __name__ == "__main__":
-    with tracing_v2_enabled():
-        result = hybrid_pipeline(
-            "How is Elon Musk connected to Jeff Bezos, and what evidence explains their business competition?",
-            return_details=True,
-        )
+    result = hybrid_pipeline(
+        "How is Elon Musk connected to Jeff Bezos, and what evidence explains their business competition?",
+        return_details=True,
+    )
 
     print("\nFINAL HYBRID ANSWER:")
     print(result["answer"])

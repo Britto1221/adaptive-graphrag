@@ -10,12 +10,12 @@ from src.evaluation.performance.resource_monitor import get_system_snapshot
 from src.retrieval.embeddings import get_embedding_model
 from src.ingestion.chunker import load_saved_chunks
 
-PIPELINE_NAME = "vector_rag"
+PIPELINE_NAME = "hybrid_rag"
 CYPHER_MODEL = "none"
 ANSWER_MODEL = "openai"
-experiment_name="VectorRAG + OpenAI answer"
-langsmith_project_name="adaptive-graphrag-vector-openai"
-batch_id="exp-batch-01"
+experiment_name="HybridRAG + OpenAI answer"
+langsmith_project_name="adaptive-graphrag-hybrid-openai"
+batch_id="exp-batch-03"
 
 QUESTIONS_FILE = Path("data/benchmark/questions/evaluation_questions.jsonl")
 RESULTS_FILE = Path("reports/benchmark_results.csv")
@@ -142,10 +142,13 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
     """Run one question through GraphRAG and evaluate the answer."""
     embeddings = embedding_model
     query = question_row["question"]
+    run_id = f"{batch_id}_{PIPELINE_NAME}_{ANSWER_MODEL}_{question_row.get('id', '')}"
     before = get_system_snapshot()
     start_time = time.perf_counter()
     try:
-        result = vector_pipeline(query,embeddings,CHUNKS)
+        ##result = graph_pipeline(query)
+        ##result = vector_pipeline(query,embeddings,CHUNKS)
+        result = hybrid_pipeline(query,embeddings,CHUNKS)
         local_latency_seconds = time.perf_counter() - start_time
         after = get_system_snapshot()
         answer = result.get("answer", "")
@@ -153,7 +156,6 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
         vector_evidence = result.get("vector_evidence", "")
         evidence = [graph_evidence,vector_evidence]
         generated_cypher, context_count = get_cypher_and_context_count(result)
-        run_id = f"{batch_id}_{PIPELINE_NAME}_{ANSWER_MODEL}_{question_row.get('id', '')}"
         eval_result = evaluate_answer(
             question=query,
             expected_answer=str(question_row.get("expected_answer", "")),
@@ -188,7 +190,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
             "graph_context_count": context_count,
 
             "answer": answer,
-            "graph_evidence": "none",
+            "graph_evidence": graph_evidence,
             "vector_evidence": vector_evidence,
 
             "correctness_score": scores["correctness_score"],
@@ -197,7 +199,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
             "evidence_score": scores["evidence_score"],
             "refusal_score": scores["refusal_score"],
             "overall_score": scores["overall_score"],
-            "evidence_used": "vector",
+            "evidence_used": scores["evidence_used"],
             "reason":scores["reason"],
 
             "error_type": "",
@@ -226,6 +228,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
 
     except Exception as e:
         local_latency_seconds = time.perf_counter() - start_time
+        after = get_system_snapshot()
         return {
             "run_id":run_id,
 
@@ -252,7 +255,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
             "evidence_score": 0,
             "refusal_score": 0,
             "overall_score": 0,
-            "evidence_used": "vector",
+            "evidence_used": "graph",
             "reason": "",
 
             "error_type": type(e).__name__,
@@ -290,7 +293,7 @@ def save_row(row: dict) -> None:
 def run_benchmark(limit: int | None = 5) -> None:
     questions = load_questions()
     if limit is not None:
-        questions = questions[45:limit]
+        questions = questions[:limit]
     create_csv_if_needed()
     print(f"Loaded {len(questions)} questions")
     print(f"Saving results to {RESULTS_FILE}")
@@ -300,6 +303,7 @@ def run_benchmark(limit: int | None = 5) -> None:
         print("\n" + "=" * 80)
         print(f"Running question {index}/{len(questions)}")
         print(f"Query: {question_row['question']}")
+        #row = run_one_question(question_row)
         row = run_one_question(question_row,embeddings,CHUNKS)
         save_row(row)
         print(f"Overall score: {row['overall_score']}")
@@ -308,4 +312,4 @@ def run_benchmark(limit: int | None = 5) -> None:
     print("\nBenchmark completed.")
 
 if __name__ == "__main__":
-    run_benchmark(limit=52)
+    run_benchmark(limit=70)
