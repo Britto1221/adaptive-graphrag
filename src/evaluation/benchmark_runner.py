@@ -10,12 +10,12 @@ from src.evaluation.performance.resource_monitor import get_system_snapshot
 from src.retrieval.embeddings import get_embedding_model
 from src.ingestion.chunker import load_saved_chunks
 
-PIPELINE_NAME = "hybrid_rag"
+PIPELINE_NAME = "vector_rag"
 CYPHER_MODEL = "none"
-ANSWER_MODEL = "openai"
-experiment_name="HybridRAG + OpenAI answer"
-langsmith_project_name="adaptive-graphrag-hybrid-openai"
-batch_id="exp-batch-03"
+ANSWER_MODEL = "qwen2.5:1.5b"
+experiment_name="VectorRAG + qwen2.5:1.5b answer"
+langsmith_project_name="adaptive-graphrag-vector-qwen2.5:1.5b"
+batch_id="exp-batch-10"
 
 QUESTIONS_FILE = Path("data/benchmark/questions/evaluation_questions.jsonl")
 RESULTS_FILE = Path("reports/benchmark_results.csv")
@@ -138,7 +138,8 @@ def normalize_eval(eval_result) -> dict:
         "reason": eval_result.get("reason", ""),
     }
 
-def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
+#def run_one_question(question_row: dict) -> dict:                                       ## Use this for Graph rag
+def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:           ## Use this for Vector and Hybrid
     """Run one question through GraphRAG and evaluate the answer."""
     embeddings = embedding_model
     query = question_row["question"]
@@ -146,9 +147,9 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
     before = get_system_snapshot()
     start_time = time.perf_counter()
     try:
-        ##result = graph_pipeline(query)
-        ##result = vector_pipeline(query,embeddings,CHUNKS)
-        result = hybrid_pipeline(query,embeddings,CHUNKS)
+        #result = graph_pipeline(query)
+        result = vector_pipeline(query,embeddings,CHUNKS)
+        #result = hybrid_pipeline(query,embeddings,CHUNKS)
         local_latency_seconds = time.perf_counter() - start_time
         after = get_system_snapshot()
         answer = result.get("answer", "")
@@ -255,7 +256,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:
             "evidence_score": 0,
             "refusal_score": 0,
             "overall_score": 0,
-            "evidence_used": "graph",
+            "evidence_used": "",
             "reason": "",
 
             "error_type": type(e).__name__,
@@ -293,7 +294,7 @@ def save_row(row: dict) -> None:
 def run_benchmark(limit: int | None = 5) -> None:
     questions = load_questions()
     if limit is not None:
-        questions = questions[:limit]
+        questions = questions[30:40]
     create_csv_if_needed()
     print(f"Loaded {len(questions)} questions")
     print(f"Saving results to {RESULTS_FILE}")
@@ -306,6 +307,7 @@ def run_benchmark(limit: int | None = 5) -> None:
         #row = run_one_question(question_row)
         row = run_one_question(question_row,embeddings,CHUNKS)
         save_row(row)
+        time.sleep(15)
         print(f"Overall score: {row['overall_score']}")
         if row["error_type"]:
             print(f"Error: {row['error_type']} - {row['error_message']}")

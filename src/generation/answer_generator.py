@@ -4,7 +4,7 @@ from src.models.model_registry import get_model
 from langchain_neo4j import GraphCypherQAChain
 from src.generation.prompt_templates import get_hybrid_rag_prompt
 
-answer_model ="openai"
+answer_model ="qwen-base"
 
 llm = get_model(answer_model)
 
