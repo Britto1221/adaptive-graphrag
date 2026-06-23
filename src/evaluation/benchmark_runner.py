@@ -15,7 +15,7 @@ CYPHER_MODEL = "none"
 ANSWER_MODEL = "openai"
 experiment_name="GraphRAG v2 + openai answer"
 langsmith_project_name="adaptive-graphrag-graph-v2-openai"
-batch_id="exp-batch-12"
+batch_id="exp-batch-16"
 
 QUESTIONS_FILE = Path("data/benchmark/questions/evaluation_questions.jsonl")
 RESULTS_FILE = Path("reports/benchmark1_results.csv")
@@ -211,7 +211,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:        
 
             "local_latency_seconds":local_latency_seconds,
 
-            "fine_tuned":"True",
+            "fine_tuned":"False",
 
             "cpu_percent_before": before["cpu_percent"],
             "ram_used_mb_before": before["ram_used_mb"],
@@ -267,7 +267,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:        
 
             "local_latency_seconds":local_latency_seconds,
 
-            "fine_tuned":"True",
+            "fine_tuned":"False",
 
             "cpu_percent_before": before["cpu_percent"],
             "ram_used_mb_before": before["ram_used_mb"],
@@ -292,52 +292,8 @@ def save_row(row: dict) -> None:
 
 def run_benchmark(limit: int | None = 5) -> None:
     questions = load_questions()
-    FAILED_GRAPH_OPENAI_IDS = {
-    "q003",
-    "q011",
-    "q014",
-    "q016",
-    "q017",
-    "q019",
-    "q021",
-    "q022",
-    "q023",
-    "q024",
-    "q025",
-    "q028",
-    "q029",
-    "q030",
-    "q031",
-    "q032",
-    "q033",
-    "q034",
-    "q035",
-    "q036",
-    "q037",
-    "q038",
-    "q040",
-    "q041",
-    "q042",
-    "q043",
-    "q044",
-    "q055",
-    "q056",
-    "q057",
-    "q059",
-    "q061",
-    "q062",
-    "q065",
-    "q066",
-    "q067",
-    "q069",
-    "q070",
-}
-    questions = [
-        q for q in questions
-        if q["id"] in FAILED_GRAPH_OPENAI_IDS
-    ]
-    """if limit is not None:
-        questions = questions[0]"""
+    if limit is not None:
+        questions = questions[:limit]
     create_csv_if_needed()
     print(f"Loaded {len(questions)} questions")
     print(f"Saving results to {RESULTS_FILE}")
@@ -356,4 +312,4 @@ def run_benchmark(limit: int | None = 5) -> None:
     print("\nBenchmark completed.")
 
 if __name__ == "__main__":
-    run_benchmark(limit=10)
+    run_benchmark(limit=70)

@@ -1,5 +1,21 @@
 # adaptive-graphrag
-Adaptive GraphRAG system comparing Vector RAG, Graph RAG,  and Hybrid RAG across 6 LLMs with fine-tuning,  30+ evaluation metrics, and a live Streamlit dashboard.
+Adaptive GraphRAG system comparing Vector RAG, Graph RAG,  and Hybrid RAG across 5 LLMs with fine-tuning,  30+ evaluation metrics, and a live Streamlit dashboard.
+
+
+## Benchmark Results
+
+| Model                  | VectorRAG | GraphRAG | HybridRAG |
+|------------------------|-----------|----------|-----------|
+| OpenAI GPT-4o Mini     |   4.44    |   2.91   |   4.59    |
+| NVIDIA NIM             |   4.79    |   2.93   |   4.93    |
+| Groq                   |   4.71    |   2.76   |   4.89    |
+| Llama3.2 1B Base       |   2.27    |   2.94   |   3.40    | 
+| Llama3.2 1B Fine-tuned |   4.31    |   2.83   |   3.64    |
+
+The fine-tuned Llama 1B model running locally on a laptop CPU scored 4.31 on VectorRAG — only 0.13 points below GPT-4o Mini which costs money per API call. Fine-tuning improved the base model by 90%. This demonstrates that domain-specific fine-tuning can bridge the gap between small local models and large commercial APIs.
+
+Key finding: Fine-tuning improved Llama 1B by 90% on VectorRAG,
+achieving performance within 0.13 points of GPT-4o Mini at zero cost.
 
 # CYPHER_GENERATION_TEMPLATE - OLD
 You are an expert Neo4j Cypher query generator.
