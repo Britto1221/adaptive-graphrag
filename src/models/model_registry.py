@@ -7,10 +7,8 @@ MODELS = {
     "openai":      openai_provider(),
     "nvidia":      nvidia_provider(),
     "groq":        groq_provider(),
-    "qwen-base":   ollama_provider("qwen2.5:1.5b"),
-    "qwen-ft":     ollama_provider("qwen-finetuned"),
     "gemma-base":  ollama_provider("llama3.2:1b"),
-    "gemma-ft":    ollama_provider("llama-finetuned"),
+    "gemma-ft":    ollama_provider("llama3.2-1b-gguf"),
 }
 
 def get_model(model_name: str):

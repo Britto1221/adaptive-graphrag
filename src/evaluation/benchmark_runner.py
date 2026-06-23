@@ -10,16 +10,15 @@ from src.evaluation.performance.resource_monitor import get_system_snapshot
 from src.retrieval.embeddings import get_embedding_model
 from src.ingestion.chunker import load_saved_chunks
 
-PIPELINE_NAME = "vector_rag"
+PIPELINE_NAME = "graph_rag"
 CYPHER_MODEL = "none"
-ANSWER_MODEL = "qwen2.5:1.5b"
-experiment_name="VectorRAG + qwen2.5:1.5b answer"
-langsmith_project_name="adaptive-graphrag-vector-qwen2.5:1.5b"
-batch_id="exp-batch-10"
+ANSWER_MODEL = "openai"
+experiment_name="GraphRAG v2 + openai answer"
+langsmith_project_name="adaptive-graphrag-graph-v2-openai"
+batch_id="exp-batch-12"
 
 QUESTIONS_FILE = Path("data/benchmark/questions/evaluation_questions.jsonl")
-RESULTS_FILE = Path("reports/benchmark_results.csv")
-
+RESULTS_FILE = Path("reports/benchmark1_results.csv")
 
 CSV_HEADERS = [
     "run_id",
@@ -148,8 +147,8 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:        
     start_time = time.perf_counter()
     try:
         #result = graph_pipeline(query)
-        result = vector_pipeline(query,embeddings,CHUNKS)
-        #result = hybrid_pipeline(query,embeddings,CHUNKS)
+        #result = vector_pipeline(query,embeddings,CHUNKS)
+        result = hybrid_pipeline(query,embeddings,CHUNKS)
         local_latency_seconds = time.perf_counter() - start_time
         after = get_system_snapshot()
         answer = result.get("answer", "")
@@ -212,7 +211,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:        
 
             "local_latency_seconds":local_latency_seconds,
 
-            "fine_tuned":"False",
+            "fine_tuned":"True",
 
             "cpu_percent_before": before["cpu_percent"],
             "ram_used_mb_before": before["ram_used_mb"],
@@ -268,7 +267,7 @@ def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:        
 
             "local_latency_seconds":local_latency_seconds,
 
-            "fine_tuned":"False",
+            "fine_tuned":"True",
 
             "cpu_percent_before": before["cpu_percent"],
             "ram_used_mb_before": before["ram_used_mb"],
@@ -293,8 +292,52 @@ def save_row(row: dict) -> None:
 
 def run_benchmark(limit: int | None = 5) -> None:
     questions = load_questions()
-    if limit is not None:
-        questions = questions[30:40]
+    FAILED_GRAPH_OPENAI_IDS = {
+    "q003",
+    "q011",
+    "q014",
+    "q016",
+    "q017",
+    "q019",
+    "q021",
+    "q022",
+    "q023",
+    "q024",
+    "q025",
+    "q028",
+    "q029",
+    "q030",
+    "q031",
+    "q032",
+    "q033",
+    "q034",
+    "q035",
+    "q036",
+    "q037",
+    "q038",
+    "q040",
+    "q041",
+    "q042",
+    "q043",
+    "q044",
+    "q055",
+    "q056",
+    "q057",
+    "q059",
+    "q061",
+    "q062",
+    "q065",
+    "q066",
+    "q067",
+    "q069",
+    "q070",
+}
+    questions = [
+        q for q in questions
+        if q["id"] in FAILED_GRAPH_OPENAI_IDS
+    ]
+    """if limit is not None:
+        questions = questions[0]"""
     create_csv_if_needed()
     print(f"Loaded {len(questions)} questions")
     print(f"Saving results to {RESULTS_FILE}")
@@ -307,11 +350,10 @@ def run_benchmark(limit: int | None = 5) -> None:
         #row = run_one_question(question_row)
         row = run_one_question(question_row,embeddings,CHUNKS)
         save_row(row)
-        time.sleep(15)
         print(f"Overall score: {row['overall_score']}")
         if row["error_type"]:
             print(f"Error: {row['error_type']} - {row['error_message']}")
     print("\nBenchmark completed.")
 
 if __name__ == "__main__":
-    run_benchmark(limit=70)
+    run_benchmark(limit=10)

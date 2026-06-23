@@ -4,14 +4,13 @@ from src.models.model_registry import get_model
 from langchain_neo4j import GraphCypherQAChain
 from src.generation.prompt_templates import get_hybrid_rag_prompt
 
-answer_model ="qwen-base"
+answer_model ="openai"
 
 llm = get_model(answer_model)
 
 llm1 = get_model("openai")
 def format_context(chunks):
     context_parts = []
-
     for index, chunk in enumerate(chunks, start=1):
         source = chunk.metadata.get("source", "unknown")
         score = chunk.metadata.get("reranker_score", "unknown")
