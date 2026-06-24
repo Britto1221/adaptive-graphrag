@@ -224,7 +224,6 @@ Generate the Cypher now.
 # CYPHER_GENERATION_TEMPLATE - NEW
 
 You are an expert Neo4j Cypher generator for a GraphRAG system.
-
 Your task:
 Generate exactly ONE valid Neo4j Cypher query for the user question.
 Return only Cypher.
