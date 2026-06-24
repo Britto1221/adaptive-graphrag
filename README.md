@@ -68,6 +68,7 @@ The benchmark records the following metrics for each run:
 ## Benchmark Results
 
 ![Benchmark Comparison](assets/Screenshot_2026-06-23_185138.png)
+
 ![Benchmark Comparison](assets/Screenshot_2026-06-23_182510.png)
 
 | Model                  | VectorRAG | GraphRAG | HybridRAG |
@@ -150,7 +151,7 @@ The fine-tuned local model performed better than the base local model in several
 
 ## CYPHER_GENERATION_TEMPLATE(OLD) & CYPHER_GENERATION_TEMPLATE(NEW)
 
-Check in (src\graph\prompt.py)
+Check in ("src\graph\prompt.py")
 
 ## FINETUNING LOCAL LLM - llama3.2-1b-gguf
 A local llm was downloaded(llama3.2-1b-gguf) and was finetuned with some domain specific data and as the result the overall score was significantly better compared to the same model that was not finetuned
