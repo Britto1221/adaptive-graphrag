@@ -79,6 +79,13 @@ The benchmark records the following metrics for each run:
 | Llama3.2 1B Base       |   2.27    |   2.94   |   3.40    |
 | Llama3.2 1B Fine-tuned |   4.31    |   2.83   |   3.64    |
 
+## LANGSMITH
+LangSmith is a comprehensive developer platform created by the team behind LangChain for tracing, evaluating, and monitoring AI and LLM (Large Language Model) applications
+
+i used langsmith to trace the no of tokens used and the p50,p99 latency along with the error rate
+
+![Model Comparison](assets/image.png)
+![Model Comparison](assets/image1.png)
 ### Model Comparison
 
 ![Model Comparison](assets/model_comparison1.png)
@@ -170,16 +177,16 @@ A local llm was downloaded(llama3.2-1b-gguf) and was finetuned with some domain 
 
 The benchmark CSV contains one row per question run. Each row stores:
 
-Question details
-Pipeline name
-Answer model
-Generated answer
-Generated Cypher
-Graph evidence
-Vector evidence
-Evaluation scores
-Latency
-Batch metadata
+Question details,
+Pipeline name,
+Answer model,
+Generated answer,
+Generated Cypher,
+Graph evidence,
+Vector evidence,
+Evaluation scores,
+Latency,
+Batch metadata and
 Resource readings
 
 ## Technologies Used
@@ -195,6 +202,7 @@ OpenAI API
 NVIDIA API
 Groq API
 Local LLM inference
+Langsmith
 
 ## Limitations
 CPU and RAM readings are treated as observability snapshots, not exact process-level benchmark measurements.
