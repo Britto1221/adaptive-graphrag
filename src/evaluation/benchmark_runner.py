@@ -12,13 +12,13 @@ from src.ingestion.chunker import load_saved_chunks
 
 PIPELINE_NAME = "graph_rag"
 CYPHER_MODEL = "none"
-ANSWER_MODEL = "openai"
-experiment_name="GraphRAG v2 + openai answer"
-langsmith_project_name="adaptive-graphrag-graph-v2-openai"
-batch_id="exp-batch-16"
+ANSWER_MODEL = "local-llama3-2-1b-ft"
+experiment_name="GraphRAG + nvidia answer"
+langsmith_project_name="adaptive-graphrag-graph-nvidia"
+batch_id="exp-batch-05"
 
 QUESTIONS_FILE = Path("data/benchmark/questions/evaluation_questions.jsonl")
-RESULTS_FILE = Path("reports/benchmark1_results.csv")
+RESULTS_FILE = Path("reports/benchmark_results.csv")
 
 CSV_HEADERS = [
     "run_id",
@@ -137,18 +137,18 @@ def normalize_eval(eval_result) -> dict:
         "reason": eval_result.get("reason", ""),
     }
 
-#def run_one_question(question_row: dict) -> dict:                                       ## Use this for Graph rag
-def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:           ## Use this for Vector and Hybrid
+def run_one_question(question_row: dict) -> dict:                                       ## Use this for Graph rag
+#def run_one_question(question_row: dict,embedding_model,CHUNKS) -> dict:           ## Use this for Vector and Hybrid
     """Run one question through GraphRAG and evaluate the answer."""
-    embeddings = embedding_model
+    #embeddings = embedding_model
     query = question_row["question"]
     run_id = f"{batch_id}_{PIPELINE_NAME}_{ANSWER_MODEL}_{question_row.get('id', '')}"
     before = get_system_snapshot()
     start_time = time.perf_counter()
     try:
-        #result = graph_pipeline(query)
+        result = graph_pipeline(query)
         #result = vector_pipeline(query,embeddings,CHUNKS)
-        result = hybrid_pipeline(query,embeddings,CHUNKS)
+        #result = hybrid_pipeline(query,embeddings,CHUNKS)
         local_latency_seconds = time.perf_counter() - start_time
         after = get_system_snapshot()
         answer = result.get("answer", "")
@@ -297,14 +297,15 @@ def run_benchmark(limit: int | None = 5) -> None:
     create_csv_if_needed()
     print(f"Loaded {len(questions)} questions")
     print(f"Saving results to {RESULTS_FILE}")
-    CHUNKS = load_saved_chunks()
-    embeddings = get_embedding_model()
+    #CHUNKS = load_saved_chunks()
+    #embeddings = get_embedding_model()
     for index, question_row in enumerate(questions, start=1):
         print("\n" + "=" * 80)
         print(f"Running question {index}/{len(questions)}")
         print(f"Query: {question_row['question']}")
-        #row = run_one_question(question_row)
-        row = run_one_question(question_row,embeddings,CHUNKS)
+        row = run_one_question(question_row)
+        time.sleep(10)
+        #row = run_one_question(question_row,embeddings,CHUNKS)
         save_row(row)
         print(f"Overall score: {row['overall_score']}")
         if row["error_type"]:

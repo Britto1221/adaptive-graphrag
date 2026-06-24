@@ -26,12 +26,6 @@ client = Client(
 PROJECT_RENAMES = {
     # old LangSmith project name : new LangSmith project name
 
-    "adaptive-graphrag-vector-llama3.2:981b-gguf":
-        "adaptive-graphrag-vector-local-llama3-2-1b-ft",
-
-    "adaptive-graphrag-graph-llama3.2:981b-gguf":
-        "adaptive-graphrag-graph-local-llama3-2-1b-ft",
-
     "adaptive-graphrag-hybrid-llama3.2:981b-gguf":
         "adaptive-graphrag-hybrid-local-llama3-2-1b-ft",
 }
