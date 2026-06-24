@@ -113,7 +113,7 @@ GraphRAG with basic prompt (V1): **2.91**
 |------------------------|-----------|-------------|
 | OpenAI GPT-4o Mini     |   2.91    |     4.89    |
 
-![Model Comparison](assets/newplot (2).png)
+![Model Comparison](assets/model_comparison.png)
 
 This demonstrates that prompt design can be more
 impactful than model selection in RAG systems.
