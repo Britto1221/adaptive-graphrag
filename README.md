@@ -160,7 +160,7 @@ The fine-tuned local model performed better than the base local model in several
 
 Check in ("src\graph\prompt.py")
 
-## FINETUNING LOCAL LLM - llama3.2-1b-gguf
+## FINETUNING LOCAL LLM - llama3.2-1b
 A local llm was downloaded(llama3.2-1b-gguf) and was finetuned with some domain specific data and as the result the overall score was significantly better compared to the same model that was not finetuned
 
 ![Model Comparison](assets/Screenshot_2026-06-23_051246.png)
