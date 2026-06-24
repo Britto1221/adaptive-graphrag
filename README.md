@@ -69,7 +69,7 @@ The benchmark records the following metrics for each run:
 
 ![Benchmark Comparison](assets/Screenshot_2026-06-24_185138.png)
 
-![Benchmark Comparison](assets/Screenshot_2026-06-24_182510.png)
+![Benchmark Comparison](assets/Screenshot_2026-06-24_185210.png)
 
 | Model                  | VectorRAG | GraphRAG | HybridRAG |
 |------------------------|-----------|----------|-----------|
@@ -94,7 +94,7 @@ achieving performance within 0.13 points of GPT-4o Mini at zero cost.
 
 ![Pipeline Comparison](assets/model_comparison2.png)
 
-![Pipeline Comparison](assets/Screenshot_2026-06-23_183308.png)
+![Pipeline Comparison](assets/Screenshot_2026-06-24_183308.png)
 
 ### Graph Metrics
 
