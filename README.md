@@ -67,9 +67,9 @@ The benchmark records the following metrics for each run:
 
 ## Benchmark Results
 
-![Benchmark Comparison](assets/Screenshot_2026-06-23_185138.png)
+![Benchmark Comparison](assets/Screenshot_2026-06-24_185138.png)
 
-![Benchmark Comparison](assets/Screenshot_2026-06-23_182510.png)
+![Benchmark Comparison](assets/Screenshot_2026-06-24_182510.png)
 
 | Model                  | VectorRAG | GraphRAG | HybridRAG |
 |------------------------|-----------|----------|-----------|
