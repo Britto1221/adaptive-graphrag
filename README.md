@@ -9,7 +9,7 @@ Adaptive GraphRAG system comparing Vector RAG, Graph RAG,  and Hybrid RAG across
 | OpenAI GPT-4o Mini     |   4.44    |   2.91   |   4.59    |
 | NVIDIA NIM             |   4.79    |   2.93   |   4.93    |
 | Groq                   |   4.71    |   2.76   |   4.89    |
-| Llama3.2 1B Base       |   2.27    |   2.94   |   3.40    | 
+| Llama3.2 1B Base       |   2.27    |   2.94   |   3.40    |
 | Llama3.2 1B Fine-tuned |   4.31    |   2.83   |   3.64    |
 
 The fine-tuned Llama 1B model running locally on a laptop CPU scored 4.31 on VectorRAG — only 0.13 points below GPT-4o Mini which costs money per API call. Fine-tuning improved the base model by 90%. This demonstrates that domain-specific fine-tuning can bridge the gap between small local models and large commercial APIs.
@@ -22,6 +22,10 @@ achieving performance within 0.13 points of GPT-4o Mini at zero cost.
 GraphRAG with optimized prompt (V2): **4.89**
 GraphRAG with basic prompt (V1): **2.91**
 **Improvement: +68% from prompt engineering alone**
+
+| Model                  | GraphRAG  | GraphRAG V2 |
+|------------------------|-----------|-------------|
+| OpenAI GPT-4o Mini     |   2.91    |     4.89    |
 
 This demonstrates that prompt design can be more
 impactful than model selection in RAG systems.
