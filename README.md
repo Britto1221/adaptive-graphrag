@@ -75,6 +75,10 @@ The benchmark records the following metrics for each run:
 | Llama3.2 1B Base       |   2.27    |   2.94   |   3.40    |
 | Llama3.2 1B Fine-tuned |   4.31    |   2.83   |   3.64    |
 
+### Model Comparison
+
+![Model Comparison](assets/model_comparison1.png)
+
 The fine-tuned Llama 1B model running locally on a laptop CPU scored 4.31 on VectorRAG — only 0.13 points below GPT-4o Mini which costs money per API call. Fine-tuning improved the base model by 90%. This demonstrates that domain-specific fine-tuning can bridge the gap between small local models and large commercial APIs.
 
 Key finding: Fine-tuning improved Llama 1B by 90% on VectorRAG,
@@ -82,25 +86,25 @@ achieving performance within 0.13 points of GPT-4o Mini at zero cost.
 
 ## Dashboard Screenshots
 
-### Home Dashboard
+### Pipeline Comparison
 
-![Home Dashboard](assets/screenshots/home.png)
+![Pipeline Comparison](assets/model_comparison2.png)
 
-### Model Comparison
+### Graph Metrics
 
-![Model Comparison](assets/screenshots/model_comparison.png)
-
-### Quality Metrics
-
-![Quality Metrics](assets/screenshots/quality_metrics.png)
-
-### Retrieval Analysis
-
-![Retrieval Analysis](assets/screenshots/retrieval_analysis.png)
+![Graph Metrics](assets/model_comparison3.png)
 
 ### Latency and Resource Analysis
 
-![Latency and Resource Analysis](assets/screenshots/latency_cost.png)
+![Latency and Resource Analysis](assets/model_comparison4.png)
+
+### Latency and Overall Analysis
+
+![Latency and Overall Analysis](assets/model_comparison5.png)
+
+### Quality Metrics
+
+![Quality Metrics](assets/model_comparison6.png)
 
 
 ## Key Finding — Prompt Engineering Impact
@@ -114,6 +118,8 @@ GraphRAG with basic prompt (V1): **2.91**
 | OpenAI GPT-4o Mini     |   2.91    |     4.89    |
 
 ![Model Comparison](assets/model_comparison.png)
+
+![Model Comparison](assets/model_comparison7.png)
 
 This demonstrates that prompt design can be more
 impactful than model selection in RAG systems.
