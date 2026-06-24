@@ -1,4 +1,4 @@
-## Beyond Vector Search: Evaluating GraphRAG, VectorRAG and Hybrid Retrieval Across Fine-Tuned Language Models
+## GraphRAG vs VectorRAG vs HybridRAG: A Multi-Model Benchmarking Study with Fine-Tuning and Prompt Engineering Analysis
 This project is a benchmarking system for comparing different RAG pipelines across multiple LLM backends. The main goal was to understand when VectorRAG, GraphRAG, and HybridRAG work well, where they fail, and how much retrieval strategy affects answer quality.
 
 The project includes a benchmark runner, structured evaluation, hallucination scoring, retrieval evidence inspection, latency tracking, and a Streamlit dashboard for analyzing the results.
