@@ -15,14 +15,7 @@ benchmark:
   quality_repetitions: 1
   latency_repetitions: 3
   request_timeout_seconds: 180
-EOF 
 
-cls
-
-
-/
-.
-cat > configs/benchmark.yaml <<'EOF'
 benchmark:
   rag_types:
     - vector

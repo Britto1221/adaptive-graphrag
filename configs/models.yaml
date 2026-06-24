@@ -23,14 +23,3 @@ models:
     fine_tuned: true
     temperature: 0
 
-  local_llm_2_base:
-    provider: ollama
-    model_name: replace-with-local-model-2
-    fine_tuned: false
-    temperature: 0
-
-  local_llm_2_finetuned:
-    provider: ollama
-    model_name: replace-with-local-model-2-ft
-    fine_tuned: true
-    temperature: 0

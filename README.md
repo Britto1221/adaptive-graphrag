@@ -1,4 +1,4 @@
-# adaptive-graphrag
+## adaptive-graphrag
 Adaptive GraphRAG system comparing Vector RAG, Graph RAG,  and Hybrid RAG across 5 LLMs with fine-tuning,  30+ evaluation metrics, and a live Streamlit dashboard.
 
 
@@ -16,6 +16,15 @@ The fine-tuned Llama 1B model running locally on a laptop CPU scored 4.31 on Vec
 
 Key finding: Fine-tuning improved Llama 1B by 90% on VectorRAG,
 achieving performance within 0.13 points of GPT-4o Mini at zero cost.
+
+## Key Finding — Prompt Engineering Impact
+
+GraphRAG with optimized prompt (V2): **4.89**
+GraphRAG with basic prompt (V1): **2.91**
+**Improvement: +68% from prompt engineering alone**
+
+This demonstrates that prompt design can be more
+impactful than model selection in RAG systems.
 
 # CYPHER_GENERATION_TEMPLATE - OLD
 You are an expert Neo4j Cypher query generator.

@@ -9,7 +9,7 @@ from langchain_neo4j import GraphCypherQAChain
 from src.models.model_registry import get_model
 
 llm = get_model("openai")
-llm1 = get_model("nvidia")
+llm1 = get_model("groq")
 
 CYPHER_GENERATION_TEMPLATE = """
 You are an expert Neo4j Cypher query generator.

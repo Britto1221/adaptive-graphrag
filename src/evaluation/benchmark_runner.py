@@ -12,10 +12,10 @@ from src.ingestion.chunker import load_saved_chunks
 
 PIPELINE_NAME = "graph_rag"
 CYPHER_MODEL = "none"
-ANSWER_MODEL = "local-llama3-2-1b-ft"
-experiment_name="GraphRAG + nvidia answer"
-langsmith_project_name="adaptive-graphrag-graph-nvidia"
-batch_id="exp-batch-05"
+ANSWER_MODEL = "groq"
+experiment_name="GraphRAG + groq answer"
+langsmith_project_name="adaptive-graphrag-graph-groq"
+batch_id="exp-batch-08"
 
 QUESTIONS_FILE = Path("data/benchmark/questions/evaluation_questions.jsonl")
 RESULTS_FILE = Path("reports/benchmark_results.csv")
