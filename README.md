@@ -26,7 +26,7 @@ GraphRAG with basic prompt (V1): **2.91**
 This demonstrates that prompt design can be more
 impactful than model selection in RAG systems.
 
-# CYPHER_GENERATION_TEMPLATE - OLD
+## CYPHER_GENERATION_TEMPLATE - OLD
 You are an expert Neo4j Cypher query generator.
 Return ONLY valid Cypher.
 Schema:
