@@ -80,6 +80,29 @@ The fine-tuned Llama 1B model running locally on a laptop CPU scored 4.31 on Vec
 Key finding: Fine-tuning improved Llama 1B by 90% on VectorRAG,
 achieving performance within 0.13 points of GPT-4o Mini at zero cost.
 
+## Dashboard Screenshots
+
+### Home Dashboard
+
+![Home Dashboard](assets/screenshots/home.png)
+
+### Model Comparison
+
+![Model Comparison](assets/screenshots/model_comparison.png)
+
+### Quality Metrics
+
+![Quality Metrics](assets/screenshots/quality_metrics.png)
+
+### Retrieval Analysis
+
+![Retrieval Analysis](assets/screenshots/retrieval_analysis.png)
+
+### Latency and Resource Analysis
+
+![Latency and Resource Analysis](assets/screenshots/latency_cost.png)
+
+
 ## Key Finding — Prompt Engineering Impact
 
 GraphRAG with optimized prompt (V2): **4.89**
