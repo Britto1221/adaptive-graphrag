@@ -767,7 +767,7 @@ The benchmark uses a fixed dataset of 70 questions, so results are specific to t
 Local LLM performance depends on hardware, model size, and inference setup.
 Cost and token analysis can be expanded further using complete LangSmith or provider-level token exports.
 
-# Development note: 
+## Development note: 
 AI tools were used as coding assistance during dashboard development and validated by the author.
 
 ## Conclusion
