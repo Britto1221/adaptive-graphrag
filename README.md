@@ -219,3 +219,7 @@ AI tools were used as coding assistance during dashboard development and validat
 This project shows that retrieval strategy has a major impact on RAG answer quality. HybridRAG produced the most stable results overall, while GraphRAG became highly competitive only after improving Cypher generation.
 
 The main takeaway is that GraphRAG is not automatically better than VectorRAG. It becomes useful when the graph schema, Cypher generation, and evidence retrieval are reliable. A strong RAG system needs both good retrieval design and strong evaluation, not just a working chatbot interface.
+
+## Final Report
+
+[Download the full project report](docs/Beyond_Vector_Search_Report.pdf)
