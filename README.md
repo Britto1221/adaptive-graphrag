@@ -1,4 +1,4 @@
-## Adaptive GraphRAG Benchmarking System
+## GraphRAG vs VectorRAG vs HybridRAG: A Multi-Model Benchmarking Study with Fine-Tuning and Prompt Engineering Analysis
 This project is a benchmarking system for comparing different RAG pipelines across multiple LLM backends. The main goal was to understand when VectorRAG, GraphRAG, and HybridRAG work well, where they fail, and how much retrieval strategy affects answer quality.
 
 The project includes a benchmark runner, structured evaluation, hallucination scoring, retrieval evidence inspection, latency tracking, and a Streamlit dashboard for analyzing the results.
@@ -160,7 +160,7 @@ The fine-tuned local model performed better than the base local model in several
 
 Check in ("src\graph\prompt.py")
 
-## FINETUNING LOCAL LLM - llama3.2-1b-gguf
+## FINETUNING LOCAL LLM - llama3.2-1b
 A local llm was downloaded(llama3.2-1b-gguf) and was finetuned with some domain specific data and as the result the overall score was significantly better compared to the same model that was not finetuned
 
 ![Model Comparison](assets/Screenshot_2026-06-23_051246.png)
@@ -219,7 +219,10 @@ AI tools were used as coding assistance during dashboard development and validat
 This project shows that retrieval strategy has a major impact on RAG answer quality. HybridRAG produced the most stable results overall, while GraphRAG became highly competitive only after improving Cypher generation.
 
 The main takeaway is that GraphRAG is not automatically better than VectorRAG. It becomes useful when the graph schema, Cypher generation, and evidence retrieval are reliable. A strong RAG system needs both good retrieval design and strong evaluation, not just a working chatbot interface.
+<<<<<<< HEAD
 
 ## Final Report
 
 [Download the full project report](docs/Beyond_Vector_Search_Report.pdf)
+=======
+>>>>>>> 2eae19fd1313385b6ed3c91da156ac0e0f53bee1
